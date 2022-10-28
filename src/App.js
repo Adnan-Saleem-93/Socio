@@ -1,8 +1,10 @@
+import Navbar from './components/Navbar'
+
 const App = () => {
   return (
-    <div>
-      <h1>Client Side</h1>
-    </div>
+    <>
+      <Navbar />
+    </>
   )
 }
 
