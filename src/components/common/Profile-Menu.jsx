@@ -8,7 +8,7 @@ import {MenuNames, MenuButtons} from '../../utils/constants'
 const styles = {
   button: css``,
   menuItem: css`
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     margin: 0.5rem;
   `
 }
