@@ -12,3 +12,8 @@ export const MenuButtons = {
     TEXT: 'Profile'
   }
 }
+
+export const Genders = {
+  MALE: 'Male',
+  FEMALE: 'Female'
+}

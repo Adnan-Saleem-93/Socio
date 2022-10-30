@@ -12,6 +12,7 @@ const styles = {
     width: 100%;
     margin: 0;
     flex-grow: 1;
+    align-items: center;
   `,
   gridItem: css`
     padding: 0 !important;
