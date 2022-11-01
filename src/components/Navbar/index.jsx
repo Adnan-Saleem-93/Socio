@@ -19,11 +19,11 @@ const styles = {
   `,
 
   homeLink: css`
-    color: ${colors.typography.headers};
+    color: ${colors.dark.main};
     cursor: pointer;
     font-weight: 700;
     &:hover {
-      color: ${colors.typography.headers_hover};
+      // transform: scale(1.1);
     }
   `
 }

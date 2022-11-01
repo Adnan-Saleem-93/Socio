@@ -1,6 +1,14 @@
+import {ColorPalette} from '../utils/constants'
+
 export const colors = {
-  typography: {
-    headers: '#706b6b',
-    headers_hover: '#000000'
+  background: {
+    main: ColorPalette.BEIGE,
+    light: '#8FE3CF'
+  },
+  light: {
+    main: '#8FE3CF'
+  },
+  dark: {
+    main: ColorPalette.EERIE_BLACK
   }
 }

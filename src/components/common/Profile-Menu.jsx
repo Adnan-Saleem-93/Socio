@@ -2,35 +2,28 @@ import {css} from '@emotion/react'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {MenuNames, MenuButtons, Genders} from '../../utils/constants'
-import MaleProfileAvatar from '../../assets/images/profile-avatar-male.png'
-import FemaleProfileAvatar from '../../assets/images/profile-avatar-female.png'
+
 import {Typography} from '@mui/material'
+import {colors} from './../../assets/colors'
+import IconifyIcon from './Iconify-Icon'
 
 const styles = {
-  button: css``,
-  menuItem: css`
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-  `,
-  profileAvatar: css`
-    margin-right: 1rem !important;
-  `
+  button: {},
+  buttonText: {
+    color: colors.dark.main
+  },
+  menuItem: {
+    padding: '0.5rem 1rem',
+    margin: '0.5rem'
+  },
+  profileAvatar: {
+    marginRight: '0.5rem'
+  }
 }
 
 export default function ProfileMenu() {
-  const [gender] = useState(Genders.MALE)
-  const [imageSource, setImageSource] = useState(null)
-
-  useEffect(() => {
-    setImageSource(gender === Genders.MALE ? MaleProfileAvatar : FemaleProfileAvatar)
-
-    return () => {
-      setImageSource(null)
-    }
-  }, [gender])
-
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
@@ -45,12 +38,14 @@ export default function ProfileMenu() {
     {
       text: 'My Account',
       style: styles.menuItem,
-      onClick: handleClose
+      onClick: handleClose,
+      icon: 'carbon:settings'
     },
     {
       text: 'Log Out',
       style: styles.menuItem,
-      onClick: handleClose
+      onClick: handleClose,
+      icon: 'carbon:logout'
     }
   ]
 
@@ -63,8 +58,8 @@ export default function ProfileMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <img alt={MenuButtons.ProfileMenu.TEXT} src={imageSource} height={40} width={40} />
-        <Typography>{MenuButtons.ProfileMenu.TEXT}</Typography>
+        <IconifyIcon icon="carbon:user-avatar-filled-alt" style={styles.profileAvatar} />
+        <Typography sx={styles.buttonText}>{MenuButtons.ProfileMenu.TEXT}</Typography>
       </Button>
       <Menu
         id={MenuNames.PROFILE_MENU}
@@ -74,15 +69,21 @@ export default function ProfileMenu() {
         MenuListProps={{
           'aria-labelledby': MenuButtons.ProfileMenu.TEXT
         }}
+        sx={{
+          '& .MuiPaper-root': {
+            backgroundColor: colors.background.main
+          }
+        }}
       >
         {menuItems.map((item, index) => {
-          const {text, onClick, style} = item
+          const {text, onClick, style, icon} = item
           return (
             <MenuItem
               onClick={onClick}
               sx={style}
               key={`${MenuNames.PROFILE_MENU}-item-${index + 1}`}
             >
+              <IconifyIcon icon={icon} style={styles.profileAvatar} />
               {text}
             </MenuItem>
           )

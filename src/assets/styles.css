@@ -1,0 +1,10 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  transition: all 0.1s ease-in;
+}
+
+body {
+  background-color: #e2e8ce;
+}
