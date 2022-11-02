@@ -6,7 +6,9 @@ const postReducer = createSlice({
     data: []
   },
   reducers: {
-    getPosts: (state) => {}
+    getPosts: (state, {payload}) => {
+      state = state
+    }
   }
 })
 
