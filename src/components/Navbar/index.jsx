@@ -1,31 +1,30 @@
 import {Typography} from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
-import {css} from '@emotion/react'
 import {CommonTexts} from '../../utils/constants'
 import {colors} from '../../assets/colors'
 import ProfileMenu from '../common/Profile-Menu'
 
 const styles = {
-  gridContainer: css`
-    padding: 12px;
-    border-bottom: 1px solid #000;
-    width: 100%;
-    margin: 0;
-    flex-grow: 1;
-    align-items: center;
-  `,
-  gridItem: css`
-    padding: 0 !important;
-  `,
+  gridContainer: {
+    padding: '12px',
+    borderBottom: '1px solid #000',
+    width: '100%',
+    margin: 0,
+    flexGrow: 1,
+    alignItems: 'center'
+  },
+  gridItem: {
+    padding: 0
+  },
 
-  homeLink: css`
-    color: ${colors.dark.main};
-    cursor: pointer;
-    font-weight: 700;
-    &:hover {
-      // transform: scale(1.1);
+  homeLink: {
+    color: colors.dark.main,
+    cursor: 'pointer',
+    fontWeight: 700,
+    '&:hover': {
+      // transform: scale(1.1),
     }
-  `
+  }
 }
 
 const Navbar = () => {

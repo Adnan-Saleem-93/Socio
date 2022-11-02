@@ -1,9 +1,8 @@
-import {css} from '@emotion/react'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import {useState} from 'react'
-import {MenuNames, MenuButtons, Genders} from '../../utils/constants'
+import {MenuNames, MenuButtons} from '../../utils/constants'
 
 import {Typography} from '@mui/material'
 import {colors} from './../../assets/colors'
