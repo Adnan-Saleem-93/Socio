@@ -70,7 +70,8 @@ export default function ProfileMenu() {
         }}
         sx={{
           '& .MuiPaper-root': {
-            backgroundColor: colors.background.main
+            backgroundColor: colors.background.main,
+            borderRadius: '0.5rem'
           }
         }}
       >

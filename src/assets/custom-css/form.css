@@ -1,0 +1,6 @@
+.MuiTooltip-tooltip {
+  background-color: #ff1b1c !important;
+}
+.MuiTooltip-arrow::before {
+  background-color: #ff1b1c !important;
+}

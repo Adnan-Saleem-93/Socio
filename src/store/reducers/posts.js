@@ -3,12 +3,13 @@ import {createSlice} from '@reduxjs/toolkit'
 const postReducer = createSlice({
   name: 'posts',
   initialState: {
-    data: []
+    data: [],
+    isLoading: false,
+    error: ''
   },
   reducers: {
-    getPosts: (state, {payload}) => {
-      state = state
-    }
+    getPosts: (state, {payload}) => {},
+    createPost: (state, {payload}) => {}
   }
 })
 

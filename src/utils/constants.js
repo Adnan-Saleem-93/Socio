@@ -25,3 +25,8 @@ export const Genders = {
   MALE: 'Male',
   FEMALE: 'Female'
 }
+
+export const FormTypes = {
+  TEXT: 'text',
+  FILE: 'file'
+}

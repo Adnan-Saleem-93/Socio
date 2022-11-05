@@ -10,5 +10,8 @@ export const colors = {
   },
   dark: {
     main: ColorPalette.EERIE_BLACK
+  },
+  error: {
+    main: ColorPalette.RED
   }
 }
