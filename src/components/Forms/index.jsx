@@ -1,6 +1,6 @@
 import {useForm, Controller} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
-import {TextField, Paper, Typography, Box, Tooltip} from '@mui/material'
+import {TextField, Paper, Typography, Box, Tooltip, Button} from '@mui/material'
 
 import {form, initialValues, validations} from './schema'
 import {FormTypes} from '../../utils/constants'
@@ -14,14 +14,41 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     margin: '1rem',
-    width: '70vw'
+    width: '50vw'
   },
   inputBox: {
     margin: '1rem'
+  },
+  pageHeader: {
+    margin: '1rem',
+    color: colors.dark.main
+  },
+  buttonsBox: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '1rem'
+  },
+  button: {
+    width: '45%'
   }
 }
 
 const Forms = () => {
+  const buttons = [
+    {
+      text: 'Create',
+      variant: 'contained',
+      type: 'submit',
+      onClick: null
+    },
+    {
+      text: 'Cancel',
+      variant: 'outlined',
+      type: 'button',
+      onClick: null
+    }
+  ]
+
   const {
     control,
     handleSubmit,
@@ -56,15 +83,33 @@ const Forms = () => {
     })
   }
 
+  const renderButtons = () => {
+    return (
+      <Box sx={styles.buttonsBox}>
+        {buttons.map((button, index) => {
+          const {text, variant, type, onClick} = button
+          return (
+            <Button variant={variant} sx={styles.button} type={type} onClick={onClick && onClick}>
+              {text}
+            </Button>
+          )
+        })}
+      </Box>
+    )
+  }
+
   const onSubmit = (data) => console.log(data)
   return (
     <>
       <FormLayout>
-        <Typography variant="h4" color={colors.dark.main}>
+        <Typography variant="h4" sx={styles.pageHeader}>
           Create New Post
         </Typography>
         <Paper variant="outlined" sx={styles.form}>
-          <form onSubmit={handleSubmit(onSubmit)}>{renderForm()}</form>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {renderForm()}
+            {renderButtons()}
+          </form>
         </Paper>
       </FormLayout>
     </>
