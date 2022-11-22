@@ -1,6 +1,6 @@
 import {useForm, Controller} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
-import {TextField, Paper, Typography, Box, Tooltip, Button} from '@mui/material'
+import {TextField, Paper, Typography, Box, Button} from '@mui/material'
 
 import {form, initialValues, validations} from './schema'
 import {FormTypes} from '../../utils/constants'
@@ -8,6 +8,8 @@ import FormLayout from '../layouts/FormLayout'
 import {colors} from './../../assets/colors'
 
 import '../../assets/custom-css/form.css'
+import IconifyIcon from '../common/Iconify-Icon'
+import FileInput from './../common/File-Input'
 
 const styles = {
   form: {
@@ -61,7 +63,7 @@ const Forms = () => {
 
   const renderForm = () => {
     return form.map((item, index) => {
-      const {name, type, label, error} = item
+      const {name, type, label} = item
       const value = initialValues[name]
       const isError = errors[name]
       return (
@@ -72,12 +74,31 @@ const Forms = () => {
             defaultValue={value}
             render={({field}) => {
               return type === FormTypes.TEXT ? (
-                <Tooltip open={isError ? error : null} title={error} arrow placement="right">
-                  <TextField fullWidth {...field} label={label} error={isError} />
-                </Tooltip>
+                <TextField
+                  fullWidth
+                  {...field}
+                  label={label}
+                  error={isError?.message || false}
+                  size="small"
+                />
+              ) : type === FormTypes.FILE ? (
+                <FileInput {...field} />
               ) : null
             }}
           />
+          {isError?.message && (
+            <Box display="flex" alignItems="center">
+              <IconifyIcon
+                icon="material-symbols:error-circle-rounded"
+                color={colors.error.main}
+                height={18}
+                width={18}
+              />
+              <Typography color={colors.error.main} variant="caption">
+                {isError.message}
+              </Typography>
+            </Box>
+          )}
         </Box>
       )
     })
