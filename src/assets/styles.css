@@ -3,8 +3,10 @@
   padding: 0px;
   box-sizing: border-box;
   transition: all 0.1s ease-in;
+  box-shadow: none !important;
+  border-radius: 0px !important;
 }
 
 body {
-  background-color: #e2e8ce;
+  background-color: #ffffff;
 }

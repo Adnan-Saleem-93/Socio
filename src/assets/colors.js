@@ -1,17 +1,20 @@
 import {ColorPalette} from '../utils/constants'
 
 export const colors = {
-  background: {
-    main: ColorPalette.BEIGE,
-    light: '#8FE3CF'
-  },
   light: {
-    main: '#8FE3CF'
+    main: ColorPalette.WHITE
+  },
+  primary: {
+    main: ColorPalette.BLUE_NCS,
+    hover: ColorPalette.BLUE_NCS_HOVER
   },
   dark: {
-    main: ColorPalette.EERIE_BLACK
+    main: ColorPalette.DARK_LIVER_HORSES
+  },
+  success: {
+    main: ColorPalette.GREEN_YELLOW_CRAYOIA
   },
   error: {
-    main: ColorPalette.RED
+    main: ColorPalette.CINNEBAR
   }
 }

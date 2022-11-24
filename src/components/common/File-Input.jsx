@@ -1,8 +1,10 @@
 const FileInput = ({...field}) => {
   const setSelectedFile = (e) => {
-    console.log(e.target.files[0])
+    if (e.target.files[0]) {
+      field.setValue('selectedFile', e.target.files[0])
+    }
   }
-  return <input {...field} type="file" onChange={setSelectedFile} />
+  return <input type="file" onChange={setSelectedFile} />
 }
 
 export default FileInput

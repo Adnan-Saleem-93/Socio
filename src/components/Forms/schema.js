@@ -46,5 +46,5 @@ export const validations = Yup.object().shape({
   [message.name]: Yup.string().required(message.error),
   [author.name]: Yup.string(),
   [tags.name]: Yup.string(),
-  [selectedFile.name]: Yup.string()
+  [selectedFile.name]: Yup.object()
 })
