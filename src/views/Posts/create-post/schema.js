@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import {FormTypes} from '../../utils/constants'
+import {FormTypes} from '../../../utils/constants.js'
 
 export const form = [
   {
@@ -46,5 +46,5 @@ export const validations = Yup.object().shape({
   [message.name]: Yup.string().required(message.error),
   [author.name]: Yup.string(),
   [tags.name]: Yup.string(),
-  [selectedFile.name]: Yup.object()
+  [selectedFile.name]: Yup.object().nullable()
 })

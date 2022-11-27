@@ -1,4 +1,4 @@
-import Forms from './components/Forms'
+import Forms from './views/Posts/create-post/index'
 import Navbar from './components/Navbar'
 
 const App = () => {

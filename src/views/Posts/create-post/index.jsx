@@ -3,16 +3,16 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {TextField, Paper, Typography, Box, Button, CircularProgress} from '@mui/material'
 
 import {form, initialValues, validations} from './schema'
-import {FormTypes} from '../../utils/constants'
-import FormLayout from '../layouts/FormLayout'
-import {colors} from './../../assets/colors'
+import {FormTypes} from '../../../utils/constants'
+import FormLayout from '../../../components/layouts/FormLayout'
+import {colors} from '../../../assets/colors'
 
-import '../../assets/custom-css/form.css'
-import IconifyIcon from '../common/Iconify-Icon'
-import FileInput from './../common/File-Input'
-import {centerAlignItem} from './../../utils/constants'
+import '../../../assets/custom-css/form.css'
+import IconifyIcon from '../../../components/common/Iconify-Icon'
+import FileInput from '../../../components/common/File-Input'
+import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
-import PageHeader from './../common/page-header'
+import PageHeader from '../../../components/common/page-header'
 
 const styles = {
   form: {
