@@ -13,6 +13,8 @@ import FileInput from '../../../components/common/File-Input'
 import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
 import PageHeader from '../../../components/common/page-header'
+import {useDispatch} from 'react-redux'
+import {errorMessage} from '../../../store/reducers/notify'
 
 const styles = {
   form: {
@@ -70,6 +72,7 @@ const Forms = () => {
     }
   ]
 
+  const dispatchAction = useDispatch()
   const {
     control,
     handleSubmit,
@@ -194,7 +197,14 @@ const Forms = () => {
     )
   }
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (values) => {
+    try {
+    } catch (error) {
+      dispatchAction(
+        errorMessage({title: 'Failed to Create Post', message: error?.response?.message})
+      )
+    }
+  }
   return (
     <>
       <FormLayout>
