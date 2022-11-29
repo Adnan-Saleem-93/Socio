@@ -15,7 +15,7 @@ const App = () => {
     <>
       <Navbar />
       <Forms />
-      {!open && <Notify />}
+      {open && <Notify />}
     </>
   )
 }
