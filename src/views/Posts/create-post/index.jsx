@@ -12,7 +12,7 @@ import IconifyIcon from '../../../components/common/Iconify-Icon'
 import FileInput from '../../../components/common/File-Input'
 import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
-import PageHeader from '../../../components/common/page-header'
+import PageHeader from '../../../components/common/Page-Header'
 import {useDispatch} from 'react-redux'
 import {errorMessage} from '../../../store/reducers/notify'
 
@@ -212,6 +212,7 @@ const Forms = () => {
         <Box
           sx={{
             display: 'flex',
+            justifyContent: 'space-between',
             flexWrap: 'wrap'
           }}
         >

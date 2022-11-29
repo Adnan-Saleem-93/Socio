@@ -4,8 +4,7 @@ const FormLayout = ({children}) => {
   return (
     <Box
       sx={{
-        marginY: '2rem',
-        marginX: '1rem',
+        margin: '1rem',
         maxHeight: '100vh'
       }}
     >

@@ -1,21 +1,15 @@
-import {Snackbar} from '@mui/material'
-import {useDispatch} from 'react-redux'
-import {hideMessage} from '../../store/reducers/notify'
+import {useSelector} from 'react-redux'
+
+import toast, {Toaster} from 'react-hot-toast'
 
 export default function Notify() {
-  const dispatchAction = useDispatch()
+  const {timeOut, open, type, message} = useSelector((state) => state.notify)
 
-  const handleClose = () => {
-    dispatchAction(hideMessage())
+  if (open) {
+    toast[type](message, {
+      duration: timeOut
+    })
   }
 
-  return (
-    <Snackbar
-      anchorOrigin={('top', 'right')}
-      open={true}
-      onClose={handleClose}
-      message="I love snacks"
-      key={'top-right'}
-    />
-  )
+  return <Toaster position="top-right" />
 }

@@ -44,3 +44,8 @@ export const centerAlignItem = {
 export const URLs = {
   CREATE_POST: '/'
 }
+
+export const NotificationTypes = {
+  SUCCESS: 'success',
+  ERROR: 'error'
+}

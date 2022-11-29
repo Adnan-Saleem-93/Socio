@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {NotificationTypes} from '../../utils/constants'
 
 export const notifyReducer = createSlice({
   name: 'notify',
@@ -7,7 +8,7 @@ export const notifyReducer = createSlice({
     timeOut: 5000,
     title: '',
     message: '',
-    type: 'info'
+    type: NotificationTypes.SUCCESS
   },
   reducers: {
     successMessage: (state, {payload}) => {

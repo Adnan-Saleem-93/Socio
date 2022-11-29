@@ -1,9 +1,9 @@
 import {Typography} from '@mui/material'
-import {colors} from './../../assets/colors'
+import {colors} from '../../assets/colors'
 
 const styles = {
   pageHeader: {
-    margin: '1rem',
+    marginX: '1rem',
     color: colors.primary.main
   }
 }

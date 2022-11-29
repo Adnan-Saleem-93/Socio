@@ -6,7 +6,6 @@ import Notify from './components/common/Notify'
 
 const App = () => {
   const {show: showLoader} = useSelector((state) => state.loader)
-  const {open} = useSelector((state) => state.notify)
 
   if (showLoader) {
     return <Loader />
@@ -15,7 +14,7 @@ const App = () => {
     <>
       <Navbar />
       <Forms />
-      {open && <Notify />}
+      <Notify />
     </>
   )
 }
