@@ -80,7 +80,17 @@ export default function ProfileMenu() {
           return (
             <MenuItem
               onClick={onClick}
-              sx={style}
+              sx={{
+                ...style,
+                '&.MuiMenuItem-root:hover': {
+                  backgroundColor: `${colors.primary.main} !important`,
+                  borderRadius: 1,
+                  color: colors.light.main,
+                  '& .iconify': {
+                    color: `${colors.light.main} !important`
+                  }
+                }
+              }}
               key={`${MenuNames.PROFILE_MENU}-item-${index + 1}`}
             >
               <IconifyIcon icon={icon} style={styles.profileAvatar} />

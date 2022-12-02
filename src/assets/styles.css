@@ -5,6 +5,7 @@
   transition: all 0.1s ease-in;
   box-shadow: none;
   border-radius: 0px;
+  font-family: 'Inter', sans-serif !important;
 }
 
 body {

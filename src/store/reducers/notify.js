@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {NotificationTypes} from '../../utils/constants'
+import toast from 'react-hot-toast'
 
 export const notifyReducer = createSlice({
   name: 'notify',
@@ -12,15 +13,10 @@ export const notifyReducer = createSlice({
   },
   reducers: {
     successMessage: (state, {payload}) => {
-      state.open = true
-      state.title = payload.title
-      state.message = payload.message
+      toast.success(payload.title)
     },
     errorMessage: (state, {payload}) => {
-      state.open = true
-      state.title = payload.title
-      state.message = payload.message
-      state.type = 'error'
+      toast.error(payload.title)
     },
     hideMessage: (state) => {
       state.open = false

@@ -1,10 +1,15 @@
+import FileBase from 'react-file-base64'
+
 const FileInput = ({...field}) => {
-  const setSelectedFile = (e) => {
-    if (e.target.files[0]) {
-      field.setValue('selectedFile', e.target.files[0])
-    }
-  }
-  return <input type="file" onChange={setSelectedFile} />
+  return (
+    <FileBase
+      type="file"
+      multiple={false}
+      onDone={(file) => {
+        field.setValue('selectedFile', file.base64)
+      }}
+    />
+  )
 }
 
 export default FileInput

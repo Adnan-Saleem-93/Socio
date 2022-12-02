@@ -42,7 +42,7 @@ export const centerAlignItem = {
 }
 
 export const URLs = {
-  CREATE_POST: '/'
+  CREATE_POST: '/posts'
 }
 
 export const NotificationTypes = {

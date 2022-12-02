@@ -15,6 +15,7 @@ import {useEffect, useState} from 'react'
 import PageHeader from '../../../components/common/Page-Header'
 import {useDispatch} from 'react-redux'
 import {errorMessage} from '../../../store/reducers/notify'
+import {postAPIs} from './../../../utils/api'
 
 const styles = {
   form: {
@@ -85,22 +86,11 @@ const Forms = () => {
   })
 
   const selectedFile = useWatch({control, name: 'selectedFile'})
-  const [fileDataURL, setFileDataURL] = useState(null)
+
   const [isImageLoading, setIsImageLoading] = useState(false)
 
   useEffect(() => {
-    let fileReader,
-      isCancel = false
-    if (selectedFile) {
-      fileReader = new FileReader()
-      generateImagePreviewURL(fileReader, isCancel)
-    }
-    return () => {
-      isCancel = true
-      if (fileReader && fileReader.readyState === 1) {
-        fileReader.abort()
-      }
-    }
+    generateImagePreviewURL()
   }, [selectedFile])
 
   const renderForm = () => {
@@ -149,13 +139,6 @@ const Forms = () => {
   const generateImagePreviewURL = (fileReader, isCancel) => {
     try {
       setIsImageLoading(true)
-      fileReader.onload = (e) => {
-        const {result} = e.target
-        if (result && !isCancel) {
-          setFileDataURL(result)
-        }
-      }
-      fileReader.readAsDataURL(selectedFile)
     } catch (error) {
       console.log(error)
     } finally {
@@ -189,7 +172,7 @@ const Forms = () => {
         {isImageLoading ? (
           <CircularProgress size={80} sx={{color: colors.primary.main}} />
         ) : selectedFile ? (
-          <img src={`${fileDataURL}`} width="100%" height="100%" alt={selectedFile.name} />
+          <img src={`${selectedFile}`} width="100%" height="100%" alt={selectedFile.name} />
         ) : (
           <Typography variant="h5">No File Selected</Typography>
         )}
@@ -197,8 +180,14 @@ const Forms = () => {
     )
   }
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     try {
+      let body = {...values, selectedFile}
+
+      const response = await postAPIs.CreatePost({body})
+      if (response) {
+        console.log(response)
+      }
     } catch (error) {
       dispatchAction(
         errorMessage({title: 'Failed to Create Post', message: error?.response?.message})
@@ -209,23 +198,23 @@ const Forms = () => {
     <>
       <FormLayout>
         <PageHeader text="Create New Post" />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap'
-          }}
-        >
-          <Paper variant="outlined" sx={styles.form}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap'
+            }}
+          >
+            <Paper variant="outlined" sx={styles.form}>
               {renderForm()}
               {renderButtons()}
-            </form>
-          </Paper>
-          <Paper variant="outlined" sx={styles.form}>
-            {renderSelectedFile()}
-          </Paper>
-        </Box>
+            </Paper>
+            <Paper variant="outlined" sx={styles.form}>
+              {renderSelectedFile()}
+            </Paper>
+          </Box>
+        </form>
       </FormLayout>
     </>
   )
