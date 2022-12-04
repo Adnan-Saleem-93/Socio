@@ -1,9 +1,15 @@
 import {api} from './axios-config'
-import {URLs} from './constants'
+import {endpoints} from './constants'
 
 export const postAPIs = {
   CreatePost: async ({body}) => {
-    const response = await api.post(URLs.CREATE_POST, body)
+    const response = await api.post(endpoints.CREATE_POST, body)
+    return response?.data || null
+  }
+}
+export const getAPIs = {
+  GetPosts: async () => {
+    const response = await api.get(endpoints.GET_POSTS)
     return response?.data || null
   }
 }

@@ -41,8 +41,9 @@ export const centerAlignItem = {
   width: '100%'
 }
 
-export const URLs = {
-  CREATE_POST: '/posts'
+export const endpoints = {
+  CREATE_POST: '/posts',
+  GET_POSTS: '/posts'
 }
 
 export const NotificationTypes = {
