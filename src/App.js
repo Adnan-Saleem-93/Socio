@@ -1,4 +1,5 @@
-import Forms from './views/Posts/create-post/index'
+// import Forms from './views/Posts/create-post/index'
+import Posts from './views/Posts/index'
 import Navbar from './components/Navbar'
 import {useSelector} from 'react-redux'
 import Loader from './components/common/Loader'
@@ -13,7 +14,8 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Forms />
+      {/* <Forms /> */}
+      <Posts />
       <Notify />
     </>
   )

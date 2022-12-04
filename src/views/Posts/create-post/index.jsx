@@ -4,7 +4,7 @@ import {TextField, Paper, Typography, Box, Button, CircularProgress} from '@mui/
 
 import {form, initialValues, validations} from './schema'
 import {FormTypes} from '../../../utils/constants'
-import FormLayout from '../../../components/layouts/FormLayout'
+import BasicLayout from '../../../components/layouts/BasicLayout'
 import {colors} from '../../../assets/colors'
 
 import '../../../assets/custom-css/form.css'
@@ -196,7 +196,7 @@ const Forms = () => {
   }
   return (
     <>
-      <FormLayout>
+      <BasicLayout>
         <PageHeader text="Create New Post" />
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box
@@ -215,7 +215,7 @@ const Forms = () => {
             </Paper>
           </Box>
         </form>
-      </FormLayout>
+      </BasicLayout>
     </>
   )
 }

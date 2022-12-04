@@ -1,6 +1,6 @@
 import {Box} from '@mui/material'
 
-const FormLayout = ({children}) => {
+const BasicLayout = ({children}) => {
   return (
     <Box
       sx={{
@@ -13,4 +13,4 @@ const FormLayout = ({children}) => {
   )
 }
 
-export default FormLayout
+export default BasicLayout
