@@ -13,7 +13,9 @@ import IconifyIcon from './Iconify-Icon'
 
 const PostCard = ({title = '', description = '', image = null, author = null, date = null}) => {
   return (
-    <Card sx={{maxWidth: 345}}>
+    <Card
+      sx={{boxShadow: 'none !important', border: `1px solid ${colors.primary.main}`, maxWidth: 345}}
+    >
       <CardHeader
         avatar={
           <Avatar sx={{bgcolor: colors.primary.main}} aria-label="post-card">
