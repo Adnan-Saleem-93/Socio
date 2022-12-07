@@ -3,7 +3,6 @@ import {colors} from '../../assets/colors'
 
 const styles = {
   pageHeader: {
-    marginX: '1rem',
     color: colors.primary.main
   }
 }

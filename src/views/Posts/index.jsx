@@ -1,3 +1,4 @@
+import {Box} from '@mui/material'
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import PageHeader from '../../components/common/Page-Header'
@@ -23,7 +24,7 @@ const Posts = () => {
   return (
     <BasicLayout>
       <PageHeader text="Posts" />
-      {renderPostCards()}
+      <Box sx={{marginTop: 2}}>{renderPostCards()}</Box>
     </BasicLayout>
   )
 }

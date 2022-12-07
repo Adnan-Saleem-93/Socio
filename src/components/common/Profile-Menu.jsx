@@ -38,13 +38,13 @@ export default function ProfileMenu() {
       text: 'My Account',
       style: styles.menuItem,
       onClick: handleClose,
-      icon: 'carbon:settings'
+      icon: 'material-symbols:settings'
     },
     {
       text: 'Log Out',
       style: styles.menuItem,
       onClick: handleClose,
-      icon: 'carbon:logout'
+      icon: 'fluent:sign-out-20-filled'
     }
   ]
 
