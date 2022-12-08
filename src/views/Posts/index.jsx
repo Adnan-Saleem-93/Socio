@@ -3,7 +3,9 @@ import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {colors} from '../../assets/colors'
 import {PrimaryButton} from '../../components/common/Buttons'
+import DataNotFound from '../../components/common/Data-Not-Found'
 import IconifyIcon from '../../components/common/Iconify-Icon'
+import Loader from '../../components/common/Loader'
 import PageHeader from '../../components/common/Page-Header'
 import PostCard from '../../components/common/Post-Card'
 import BasicLayout from '../../components/layouts/BasicLayout'
@@ -11,6 +13,7 @@ import {getPosts} from '../../store/reducers/posts'
 
 const Posts = () => {
   const {posts} = useSelector((state) => state.posts)
+  const {isLoading} = useSelector((state) => state.posts)
   const dispatchAction = useDispatch()
 
   useEffect(() => {
@@ -20,6 +23,9 @@ const Posts = () => {
   }, [])
 
   const renderPostCards = () => {
+    if (!posts?.length) {
+      return <DataNotFound />
+    }
     return posts?.map((post, index) => {
       return <PostCard {...post} key={`post-card-${index + 1}`} />
     })
@@ -35,7 +41,7 @@ const Posts = () => {
           />
         }
       />
-      <Box sx={{marginTop: 2}}>{renderPostCards()}</Box>
+      {isLoading ? <Loader size={80} /> : <Box sx={{marginTop: 2}}>{renderPostCards()}</Box>}
     </BasicLayout>
   )
 }

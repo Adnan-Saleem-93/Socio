@@ -50,3 +50,21 @@ export const NotificationTypes = {
   SUCCESS: 'success',
   ERROR: 'error'
 }
+
+export const justifySpaceBetweenFlexboxRow = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center'
+}
+
+export const justifyCenterFlexboxRow = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+export const columnStartAlignedFlexbox = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  flexDirection: 'column',
+  alignItems: 'flex-start'
+}

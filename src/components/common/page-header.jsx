@@ -3,7 +3,7 @@ import {colors} from '../../assets/colors'
 
 const styles = {
   pageHeader: {
-    color: colors.error.main,
+    color: colors.primary.main,
     textTransform: 'uppercase',
     fontWeight: 700
   }
