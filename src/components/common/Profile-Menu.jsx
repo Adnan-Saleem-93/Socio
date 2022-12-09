@@ -2,7 +2,7 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import {useState} from 'react'
-import {MenuNames, MenuButtons} from '../../utils/constants'
+import {MenuNames, MenuButtons, Icons} from '../../utils/constants'
 
 import {Typography} from '@mui/material'
 import {colors} from './../../assets/colors'
@@ -38,13 +38,13 @@ export default function ProfileMenu() {
       text: 'My Account',
       style: styles.menuItem,
       onClick: handleClose,
-      icon: 'material-symbols:settings'
+      icon: Icons.SETTINGS
     },
     {
       text: 'Log Out',
       style: styles.menuItem,
       onClick: handleClose,
-      icon: 'fluent:sign-out-20-filled'
+      icon: Icons.LOG_OUT
     }
   ]
 
@@ -57,7 +57,7 @@ export default function ProfileMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <IconifyIcon icon="carbon:user-avatar-filled-alt" style={styles.profileAvatar} />
+        <IconifyIcon icon={Icons.AVATAR_ALT} style={styles.profileAvatar} />
         <Typography sx={styles.buttonText}>{MenuButtons.ProfileMenu.TEXT}</Typography>
       </Button>
       <Menu

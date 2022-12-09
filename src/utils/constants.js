@@ -73,5 +73,10 @@ export const Icons = {
   SHARE: 'material-symbols:share',
   LIKE: 'mdi:cards-heart',
   AVATAR: 'carbon:user-avatar-filled',
-  MENU: 'carbon:overflow-menu-vertical'
+  AVATAR_ALT: 'carbon:user-avatar-filled-alt',
+  MENU: 'carbon:overflow-menu-vertical',
+  SETTINGS: 'material-symbols:settings',
+  LOG_OUT: 'fluent:sign-out-20-filled',
+  ADD: 'material-symbols:add',
+  ERROR: 'material-symbols:error-circle-rounded'
 }

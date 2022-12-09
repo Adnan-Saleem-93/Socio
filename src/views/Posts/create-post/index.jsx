@@ -3,7 +3,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {TextField, Paper, Typography, Box, Button, CircularProgress} from '@mui/material'
 
 import {form, initialValues, validations} from './schema'
-import {FormTypes} from '../../../utils/constants'
+import {FormTypes, Icons} from '../../../utils/constants'
 import BasicLayout from '../../../components/layouts/BasicLayout'
 import {colors} from '../../../assets/colors'
 
@@ -121,12 +121,7 @@ const Forms = () => {
           />
           {isError?.message && (
             <Box display="flex" alignItems="center">
-              <IconifyIcon
-                icon="material-symbols:error-circle-rounded"
-                color={colors.error.main}
-                height={18}
-                width={18}
-              />
+              <IconifyIcon icon={Icons.ERROR} color={colors.error.main} height={18} width={18} />
               <Typography color={colors.error.main} variant="caption">
                 {isError.message}
               </Typography>

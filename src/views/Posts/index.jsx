@@ -10,6 +10,7 @@ import PageHeader from '../../components/common/Page-Header'
 import PostCard from '../../components/common/Post-Card'
 import BasicLayout from '../../components/layouts/BasicLayout'
 import {getPosts} from '../../store/reducers/posts'
+import {Icons} from '../../utils/constants'
 
 const Posts = () => {
   const {posts} = useSelector((state) => state.posts)
@@ -36,7 +37,7 @@ const Posts = () => {
         text="Posts"
         button={
           <PrimaryButton
-            icon={<IconifyIcon icon="material-symbols:add" color={colors.light.main} />}
+            icon={<IconifyIcon icon={Icons.ADD} color={colors.light.main} />}
             text="Create New Post"
           />
         }
