@@ -68,3 +68,10 @@ export const columnStartAlignedFlexbox = {
   flexDirection: 'column',
   alignItems: 'flex-start'
 }
+
+export const Icons = {
+  SHARE: 'material-symbols:share',
+  LIKE: 'mdi:cards-heart',
+  AVATAR: 'carbon:user-avatar-filled',
+  MENU: 'carbon:overflow-menu-vertical'
+}

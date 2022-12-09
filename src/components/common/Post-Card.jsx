@@ -11,6 +11,7 @@ import {
 import {colors} from '../../assets/colors'
 import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
+import {Icons} from '../../utils/constants'
 
 const styles = {
   card: {
@@ -40,12 +41,12 @@ const PostCard = ({
               {author.substring(0, 1)}
             </Avatar>
           ) : (
-            <IconifyIcon icon="carbon:user-avatar-filled" style={{...styles.icon}} />
+            <IconifyIcon icon={Icons.AVATAR} style={{...styles.icon}} />
           )
         }
         action={
           <IconButton aria-label="settings">
-            <IconifyIcon icon="carbon:overflow-menu-vertical" />
+            <IconifyIcon icon={Icons.MENU} />
           </IconButton>
         }
         title={title}
@@ -59,10 +60,10 @@ const PostCard = ({
       </CardContent>
       <CardActions disableSpacing sx={{...styles.actions}}>
         <IconButton aria-label="add to favorites" title="Add To Favorites">
-          <IconifyIcon icon="mdi:cards-heart" />
+          <IconifyIcon icon={Icons.LIKE} />
         </IconButton>
         <IconButton aria-label="share" title="Share">
-          <IconifyIcon icon="material-symbols:share" />
+          <IconifyIcon icon={Icons.SHARE} />
         </IconButton>
       </CardActions>
     </Card>
