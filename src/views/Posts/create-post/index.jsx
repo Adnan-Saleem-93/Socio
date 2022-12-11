@@ -16,6 +16,7 @@ import PageHeader from '../../../components/common/Page-Header'
 import {useDispatch} from 'react-redux'
 import {errorMessage} from '../../../store/reducers/notify'
 import {postAPIs} from './../../../utils/api'
+import {useNavigate} from 'react-router-dom'
 
 const styles = {
   form: {
@@ -43,7 +44,8 @@ const styles = {
   }
 }
 
-const Forms = () => {
+const CreatePost = () => {
+  const navigate = useNavigate()
   const buttons = [
     {
       text: 'Create',
@@ -61,7 +63,7 @@ const Forms = () => {
       text: 'Cancel',
       variant: 'outlined',
       type: 'button',
-      onClick: null,
+      onClick: () => navigate('/posts'),
       customStyles: {
         color: `${colors.primary.main} !important`,
         borderColor: `${colors.primary.main} !important`,
@@ -215,4 +217,4 @@ const Forms = () => {
   )
 }
 
-export default Forms
+export default CreatePost

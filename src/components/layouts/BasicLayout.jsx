@@ -1,15 +1,19 @@
 import {Box} from '@mui/material'
+import Navbar from '../Navbar'
 
 const BasicLayout = ({children}) => {
   return (
-    <Box
-      sx={{
-        margin: '1rem',
-        maxHeight: '100vh'
-      }}
-    >
-      {children}
-    </Box>
+    <>
+      <Navbar />
+      <Box
+        sx={{
+          margin: '1rem',
+          maxHeight: '100vh'
+        }}
+      >
+        {children}
+      </Box>
+    </>
   )
 }
 

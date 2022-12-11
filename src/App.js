@@ -1,9 +1,8 @@
-// import Forms from './views/Posts/create-post/index'
-import Posts from './views/Posts/index'
-import Navbar from './components/Navbar'
 import {useSelector} from 'react-redux'
 import Loader from './components/common/Loader'
 import Notify from './components/common/Notify'
+import {RouterProvider} from 'react-router-dom'
+import router from './utils/router'
 
 const App = () => {
   const {show: showLoader} = useSelector((state) => state.loader)
@@ -13,9 +12,7 @@ const App = () => {
   }
   return (
     <>
-      <Navbar />
-      {/* <Forms /> */}
-      <Posts />
+      <RouterProvider router={router} />
       <Notify />
     </>
   )

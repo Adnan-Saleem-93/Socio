@@ -1,6 +1,7 @@
 import {Box} from '@mui/material'
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import {colors} from '../../assets/colors'
 import {PrimaryButton} from '../../components/common/Buttons'
 import DataNotFound from '../../components/common/Data-Not-Found'
@@ -16,6 +17,7 @@ const Posts = () => {
   const {posts} = useSelector((state) => state.posts)
   const {isLoading} = useSelector((state) => state.posts)
   const dispatchAction = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatchAction(getPosts())
@@ -39,6 +41,7 @@ const Posts = () => {
           <PrimaryButton
             icon={<IconifyIcon icon={Icons.ADD} color={colors.light.main} />}
             text="Create New Post"
+            onClick={() => navigate('/create-post')}
           />
         }
       />
