@@ -1,7 +1,8 @@
 import {Box} from '@mui/material'
+import {Outlet} from 'react-router-dom'
 import Navbar from '../Navbar'
 
-const BasicLayout = ({children}) => {
+const BasicLayout = () => {
   return (
     <>
       <Navbar />
@@ -11,7 +12,7 @@ const BasicLayout = ({children}) => {
           maxHeight: '100vh'
         }}
       >
-        {children}
+        <Outlet />
       </Box>
     </>
   )

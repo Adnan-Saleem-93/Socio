@@ -60,10 +60,10 @@ const PostCard = ({
       </CardContent>
       <CardActions disableSpacing sx={{...styles.actions}}>
         <IconButton aria-label="add to favorites" title="Add To Favorites">
-          <IconifyIcon icon={Icons.LIKE} />
+          <IconifyIcon icon={Icons.LIKE} color={colors.error.main} />
         </IconButton>
         <IconButton aria-label="share" title="Share">
-          <IconifyIcon icon={Icons.SHARE} />
+          <IconifyIcon icon={Icons.SHARE} color={colors.primary.hover} />
         </IconButton>
       </CardActions>
     </Card>

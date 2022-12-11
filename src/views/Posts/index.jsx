@@ -9,7 +9,6 @@ import IconifyIcon from '../../components/common/Iconify-Icon'
 import Loader from '../../components/common/Loader'
 import PageHeader from '../../components/common/Page-Header'
 import PostCard from '../../components/common/Post-Card'
-import BasicLayout from '../../components/layouts/BasicLayout'
 import {getPosts} from '../../store/reducers/posts'
 import {Icons} from '../../utils/constants'
 
@@ -34,7 +33,7 @@ const Posts = () => {
     })
   }
   return (
-    <BasicLayout>
+    <>
       <PageHeader
         text="Posts"
         button={
@@ -46,7 +45,7 @@ const Posts = () => {
         }
       />
       {isLoading ? <Loader size={80} /> : <Box sx={{marginTop: 2}}>{renderPostCards()}</Box>}
-    </BasicLayout>
+    </>
   )
 }
 

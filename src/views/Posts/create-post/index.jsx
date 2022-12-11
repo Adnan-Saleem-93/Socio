@@ -1,12 +1,9 @@
 import {useForm, Controller, useWatch} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {TextField, Paper, Typography, Box, Button, CircularProgress} from '@mui/material'
-
 import {form, initialValues, validations} from './schema'
 import {FormTypes, Icons} from '../../../utils/constants'
-import BasicLayout from '../../../components/layouts/BasicLayout'
 import {colors} from '../../../assets/colors'
-
 import '../../../assets/custom-css/form.css'
 import IconifyIcon from '../../../components/common/Iconify-Icon'
 import FileInput from '../../../components/common/File-Input'
@@ -193,26 +190,24 @@ const CreatePost = () => {
   }
   return (
     <>
-      <BasicLayout>
-        <PageHeader text="Create New Post" />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap'
-            }}
-          >
-            <Paper variant="outlined" sx={styles.form}>
-              {renderForm()}
-              {renderButtons()}
-            </Paper>
-            <Paper variant="outlined" sx={styles.form}>
-              {renderSelectedFile()}
-            </Paper>
-          </Box>
-        </form>
-      </BasicLayout>
+      <PageHeader text="Create New Post" />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap'
+          }}
+        >
+          <Paper variant="outlined" sx={styles.form}>
+            {renderForm()}
+            {renderButtons()}
+          </Paper>
+          <Paper variant="outlined" sx={styles.form}>
+            {renderSelectedFile()}
+          </Paper>
+        </Box>
+      </form>
     </>
   )
 }
