@@ -1,6 +1,8 @@
 import {Box} from '@mui/material'
 import {Outlet} from 'react-router-dom'
 import {authBG} from '../../assets/backgrounds'
+import {colors} from '../../assets/colors'
+import {centerAlignItem} from '../../utils/constants'
 
 const AuthLayout = () => {
   return (
@@ -12,9 +14,22 @@ const AuthLayout = () => {
           width: '100vw',
           backgroundImage: `url("${authBG}")`
         }}
-        id="auth-page-layout"
       >
-        <Outlet />
+        <Box sx={{...centerAlignItem}}>
+          <Box
+            sx={{
+              ...centerAlignItem,
+              flexDirection: 'column',
+              background: colors.light.main,
+              height: '50%',
+              maxHeight: '75%',
+              width: '40%',
+              borderRadius: 3
+            }}
+          >
+            <Outlet />
+          </Box>
+        </Box>
       </Box>
     </>
   )

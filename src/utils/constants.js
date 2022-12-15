@@ -70,6 +70,12 @@ export const columnStartAlignedFlexbox = {
   flexDirection: 'column',
   alignItems: 'flex-start'
 }
+export const columnCenterAlignedFlexbox = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  flexDirection: 'column',
+  alignItems: 'center'
+}
 
 export const Icons = {
   SHARE: 'material-symbols:share',

@@ -2,11 +2,16 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {Box, Button, TextField, Typography} from '@mui/material'
 import {Controller, useForm} from 'react-hook-form'
 import {useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {colors} from '../../../assets/colors'
 import IconifyIcon from '../../../components/common/Iconify-Icon'
 import {errorMessage} from '../../../store/reducers/notify'
-import {centerAlignItem, FormTypes, Icons} from '../../../utils/constants'
+import {
+  centerAlignItem,
+  columnCenterAlignedFlexbox,
+  FormTypes,
+  Icons
+} from '../../../utils/constants'
 import {form, initialValues, validations} from './schema'
 
 const styles = {
@@ -17,7 +22,8 @@ const styles = {
     width: '100%'
   },
   inputBox: {
-    margin: '1rem'
+    margin: '1rem 0',
+    width: '100%'
   },
   inputField: {
     '& .Mui-focused': {
@@ -25,12 +31,11 @@ const styles = {
     }
   },
   buttonsBox: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '1rem'
+    margin: '1rem 0',
+    width: '100%'
   },
   button: {
-    // width: '100%'
+    width: '100%'
   }
 }
 
@@ -38,7 +43,7 @@ const Login = () => {
   const navigate = useNavigate()
   const buttons = [
     {
-      text: 'Create',
+      text: 'Log In',
       variant: 'contained',
       type: 'submit',
       onClick: null,
@@ -134,30 +139,36 @@ const Login = () => {
   }
 
   return (
-    <Box sx={{...centerAlignItem}}>
-      <Box
-        sx={{
-          ...centerAlignItem,
-          background: colors.light.main,
-          height: '50%',
-          width: '40%',
-          borderRadius: 3
-        }}
-      >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap'
-            }}
-          >
-            {renderForm()}
-            {renderButtons()}
-          </Box>
-        </form>
-      </Box>
-    </Box>
+    <>
+      <Typography>
+        Don't have an account?{' '}
+        <Button
+          sx={{
+            textDecoration: 'none',
+            fontWeight: 700,
+            color: colors.primary[500],
+            padding: 0,
+            '&:hover': {
+              color: colors.primary.main,
+              background: colors.light.main
+            }
+          }}
+          onClick={() => navigate('/sign-up')}
+        >
+          Sign Up
+        </Button>
+      </Typography>
+      <form onSubmit={handleSubmit(onSubmit)} style={{width: '100%', padding: '1rem'}}>
+        <Box
+          sx={{
+            ...columnCenterAlignedFlexbox
+          }}
+        >
+          {renderForm()}
+          {renderButtons()}
+        </Box>
+      </form>
+    </>
   )
 }
 

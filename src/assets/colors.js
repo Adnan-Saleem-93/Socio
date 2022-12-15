@@ -6,7 +6,8 @@ export const colors = {
   },
   primary: {
     main: ColorPalette.BLUE_NCS,
-    hover: ColorPalette.BLUE_NCS_HOVER
+    hover: ColorPalette.BLUE_NCS_HOVER,
+    500: '#6e67f3e6'
   },
   dark: {
     main: ColorPalette.DARK_LIVER_HORSES
