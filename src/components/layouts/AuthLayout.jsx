@@ -12,7 +12,7 @@ const AuthLayout = () => {
           maxHeight: '100vh',
           height: '100vh',
           width: '100vw',
-          backgroundImage: `url("${authBG}")`
+          backgroundImage: `url("${authBG}")`,
         }}
       >
         <Box sx={{...centerAlignItem}}>
@@ -21,10 +21,11 @@ const AuthLayout = () => {
               ...centerAlignItem,
               flexDirection: 'column',
               background: colors.light.main,
-              height: '50%',
+              height: 'max-content',
               maxHeight: '75%',
-              width: '40%',
-              borderRadius: 3
+              width: {xs: '80%', sm: '60%', md: '30%'},
+              borderRadius: 3,
+              padding: '1rem',
             }}
           >
             <Outlet />
