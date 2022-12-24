@@ -37,22 +37,28 @@ const Login = () => {
 
   return (
     <>
-      <Typography>
-        Don't have an account?{' '}
+      <Typography
+        sx={{
+          fontSize: '1rem',
+        }}
+      >
+        Or{' '}
         <Button
           sx={{
             textDecoration: 'none',
             fontWeight: 700,
+            fontSize: '1rem',
             color: colors.primary[500],
             padding: 0,
             '&:hover': {
               color: colors.primary.main,
               background: colors.light.main,
             },
+            textTransform: 'capitalize',
           }}
           onClick={() => navigate('/sign-up')}
         >
-          Sign Up
+          Create a New Account
         </Button>
       </Typography>
       <ReactHookForm

@@ -1,10 +1,12 @@
 import {Box} from '@mui/material'
-import {Outlet} from 'react-router-dom'
+import {Navigate, Outlet} from 'react-router-dom'
 import {authBG} from '../../assets/backgrounds'
 import {colors} from '../../assets/colors'
 import {centerAlignItem} from '../../utils/constants'
 
 const AuthLayout = () => {
+  const auth = localStorage.getItem('auth') ? true : false
+
   return (
     <>
       <Box
@@ -28,7 +30,7 @@ const AuthLayout = () => {
               padding: '1rem',
             }}
           >
-            <Outlet />
+            {auth ? <Navigate to="/posts" /> : <Outlet />}
           </Box>
         </Box>
       </Box>

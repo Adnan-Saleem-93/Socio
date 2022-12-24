@@ -59,7 +59,7 @@ const SignUp = () => {
           }}
           onClick={() => navigate('/login')}
         >
-          Sign In
+          Log In
         </Button>
       </Typography>
     </>

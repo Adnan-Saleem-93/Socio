@@ -14,14 +14,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        index: true,
+        element: <Login />,
+      },
+      {
         path: '/login',
-        element: <Login />
+        element: <Login />,
       },
       {
         path: '/sign-up',
-        element: <SignUp />
-      }
-    ]
+        element: <SignUp />,
+      },
+    ],
   },
   {
     path: '/',
@@ -29,15 +33,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        index: true,
+        element: <Posts />,
+      },
+      {
         path: '/posts',
-        element: <Posts />
+        element: <Posts />,
       },
       {
         path: '/create-post',
-        element: <CreatePost />
-      }
-    ]
-  }
+        element: <CreatePost />,
+      },
+    ],
+  },
 ])
 
 export default router
