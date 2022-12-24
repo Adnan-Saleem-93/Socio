@@ -40,9 +40,12 @@ const ReactHookForm = ({
   submitForm = null,
   buttons = null,
   customRenderButtons = null,
+  renderRememberMe = null,
+  customStyles = null,
+  control = null,
 }) => {
   const {
-    control,
+    control: localControl,
     handleSubmit,
     formState: {errors},
   } = useForm({
@@ -60,7 +63,7 @@ const ReactHookForm = ({
         <Box sx={styles.inputBox}>
           <Controller
             name={name}
-            control={control}
+            control={control ? control : localControl}
             defaultValue={value}
             render={({field}) => {
               return type === FormTypes.TEXT ? (
@@ -112,9 +115,11 @@ const ReactHookForm = ({
         <Box
           sx={{
             ...columnCenterAlignedFlexbox,
+            ...customStyles,
           }}
         >
           {renderForm()}
+          {renderRememberMe && renderRememberMe()}
           {customRenderButtons ? customRenderButtons() : renderButtons()}
         </Box>
       </form>
