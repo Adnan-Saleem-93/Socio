@@ -1,0 +1,39 @@
+.article {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    filter: brightness(70%);
+    height: 100%;
+}
+
+.image:hover{
+    filter: brightness(100%);
+}
+
+.header {
+    font-size: 1rem !important;
+    color: white;
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0;
+    left: 0.5rem;
+    right: 0;
+    height: fit-content;
+    font-weight: 900;
+}
+.date {
+    font-size: 0.75rem !important;
+    color: rgba(255, 255, 255, 0.673);
+    position: absolute;
+    top: 2rem;
+    bottom: 0;
+    left: 0.5rem;
+    right: 0;
+    height: fit-content;
+    font-weight: 900;
+}
