@@ -24,7 +24,6 @@ const PostCard = ({
   author = null,
   createdAt = null,
   likes = 0,
-  tags = [],
 }) => {
   const renderMessage = () => {
     if (message.length > 30) {
