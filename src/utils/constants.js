@@ -5,34 +5,34 @@ export const ColorPalette = {
   GREEN_YELLOW_CRAYOIA: '#F6F5AE',
   MAXIMUM_YELLOW: '#F5F749',
   CINNEBAR: '#F24236',
-  WHITE: '#FFFFFF'
+  WHITE: '#FFFFFF',
 }
 
 export const CommonTexts = {
-  APP_HEADER: 'Memoria'
+  APP_HEADER: 'Memoria',
 }
 
 export const MenuNames = {
-  PROFILE_MENU: 'profile-menu'
+  PROFILE_MENU: 'profile-menu',
 }
 
 export const MenuButtons = {
   ProfileMenu: {
     ID: 'basic-button',
-    TEXT: 'Profile'
-  }
+    TEXT: 'Profile',
+  },
 }
 
 export const Genders = {
   MALE: 'Male',
-  FEMALE: 'Female'
+  FEMALE: 'Female',
 }
 
 export const FormTypes = {
   TEXT: 'text',
   EMAIL: 'email',
   PASSWORD: 'password',
-  FILE: 'file'
+  FILE: 'file',
 }
 
 export const centerAlignItem = {
@@ -40,41 +40,41 @@ export const centerAlignItem = {
   alignItems: 'center',
   justifyContent: 'center',
   height: '100%',
-  width: '100%'
+  width: '100%',
 }
 
 export const endpoints = {
   CREATE_POST: '/posts',
-  GET_POSTS: '/posts'
+  GET_POSTS: '/posts',
 }
 
 export const NotificationTypes = {
   SUCCESS: 'success',
-  ERROR: 'error'
+  ERROR: 'error',
 }
 
 export const justifySpaceBetweenFlexboxRow = {
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center'
+  alignItems: 'center',
 }
 
 export const justifyCenterFlexboxRow = {
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
 }
 export const columnStartAlignedFlexbox = {
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',
-  alignItems: 'flex-start'
+  alignItems: 'flex-start',
 }
 export const columnCenterAlignedFlexbox = {
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',
-  alignItems: 'center'
+  alignItems: 'center',
 }
 
 export const Icons = {
@@ -82,9 +82,11 @@ export const Icons = {
   LIKE: 'mdi:cards-heart',
   AVATAR: 'carbon:user-avatar-filled',
   AVATAR_ALT: 'carbon:user-avatar-filled-alt',
-  MENU: 'carbon:overflow-menu-vertical',
+  MENU_VERTICAL: 'carbon:overflow-menu-vertical',
+  MENU_HORIZONTAL: 'carbon:overflow-menu-horizontal',
   SETTINGS: 'material-symbols:settings',
   LOG_OUT: 'fluent:sign-out-20-filled',
   ADD: 'material-symbols:add',
-  ERROR: 'material-symbols:error-circle-rounded'
+  ERROR: 'material-symbols:error-circle-rounded',
+  DELETE: 'material-symbols:delete-outline',
 }

@@ -4,6 +4,7 @@ import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
 import {Icons} from '../../utils/constants'
 import postStyles from '../../assets/custom-css/post.module.css'
+import Menu from './Menu'
 
 const styles = {
   card: {
@@ -26,7 +27,7 @@ const PostCard = ({
   likes = 0,
 }) => {
   const renderMessage = () => {
-    if (message.length > 30) {
+    if (message.length >= 30) {
       return message.substring(0, 29)
     }
     return message
@@ -43,6 +44,7 @@ const PostCard = ({
         <Typography variant="h6" fontWeight={800} className={postStyles.date}>
           {moment(createdAt).format('MMM DD, YYYY hh:mm A')}
         </Typography>
+        <Menu />
       </article>
       <CardContent sx={{padding: 1, paddingBottom: 0}}>
         <Typography variant="h6" fontWeight={800} sx={{...styles.description}}>
@@ -62,6 +64,9 @@ const PostCard = ({
         >
           {likes}
         </Typography>
+        <IconButton aria-label="Delete Post" title="Delete Post">
+          <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
+        </IconButton>
       </CardActions>
     </Card>
   )

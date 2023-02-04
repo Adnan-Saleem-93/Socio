@@ -11,7 +11,7 @@ import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
 import PageHeader from '../../../components/common/Page-Header'
 import {useDispatch} from 'react-redux'
-import {errorMessage} from '../../../store/reducers/notify'
+import {errorMessage, successMessage} from '../../../store/reducers/notify'
 import {postAPIs} from './../../../utils/api'
 import {useNavigate} from 'react-router-dom'
 
@@ -21,24 +21,24 @@ const styles = {
     flexDirection: 'column',
     margin: '1rem',
     width: {md: '45%', sm: '65%', xs: '100%'},
-    borderColor: colors.dark.main
+    borderColor: colors.dark.main,
   },
   inputBox: {
-    margin: '1rem'
+    margin: '1rem',
   },
   inputField: {
     '& .Mui-focused': {
-      borderColor: `${colors.primary.main} !important`
-    }
+      borderColor: `${colors.primary.main} !important`,
+    },
   },
   buttonsBox: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '1rem'
+    margin: '1rem',
   },
   button: {
-    width: '45%'
-  }
+    width: '45%',
+  },
 }
 
 const CreatePost = () => {
@@ -52,9 +52,9 @@ const CreatePost = () => {
       customStyles: {
         backgroundColor: `${colors.primary.main} !important`,
         '&:hover': {
-          backgroundColor: `${colors.primary.hover} !important`
-        }
-      }
+          backgroundColor: `${colors.primary.hover} !important`,
+        },
+      },
     },
     {
       text: 'Cancel',
@@ -66,10 +66,10 @@ const CreatePost = () => {
         borderColor: `${colors.primary.main} !important`,
         '&:hover': {
           color: `${colors.primary.hover} !important`,
-          borderColor: `${colors.primary.hover} !important`
-        }
-      }
-    }
+          borderColor: `${colors.primary.hover} !important`,
+        },
+      },
+    },
   ]
 
   const dispatchAction = useDispatch()
@@ -77,11 +77,11 @@ const CreatePost = () => {
     control,
     handleSubmit,
     setValue,
-    formState: {errors}
+    formState: {errors},
   } = useForm({
     resolver: yupResolver(validations),
     reValidateMode: 'onChange',
-    defaultValues: initialValues
+    defaultValues: initialValues,
   })
 
   const selectedFile = useWatch({control, name: 'selectedFile'})
@@ -180,7 +180,8 @@ const CreatePost = () => {
 
       const response = await postAPIs.CreatePost({body})
       if (response) {
-        console.log(response)
+        dispatchAction(successMessage({title: 'Success!', message: 'Post Created Successfully'}))
+        navigate('/posts')
       }
     } catch (error) {
       dispatchAction(
@@ -196,14 +197,14 @@ const CreatePost = () => {
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           }}
         >
           <Paper variant="outlined" sx={styles.form}>
             {renderForm()}
             {renderButtons()}
           </Paper>
-          <Paper variant="outlined" sx={styles.form}>
+          <Paper variant="outlined" sx={{...styles.form, objectFit: 'cover', maxHeight: '55vh'}}>
             {renderSelectedFile()}
           </Paper>
         </Box>
