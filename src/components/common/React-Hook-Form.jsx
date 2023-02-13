@@ -16,7 +16,7 @@ const styles = {
     width: '100%',
   },
   inputBox: {
-    margin: '1rem 0',
+    margin: '0.5rem 0',
     width: '100%',
   },
   inputField: {

@@ -33,6 +33,7 @@ export const FormTypes = {
   EMAIL: 'email',
   PASSWORD: 'password',
   FILE: 'file',
+  RADIO: 'radio',
 }
 
 export const centerAlignItem = {

@@ -7,7 +7,8 @@ export const PrimaryButton = ({
   text = '',
   onClick = null,
   bgColor = colors.primary.main,
-  icon = null
+  icon = null,
+  customStyle = null,
 }) => {
   return (
     (text || icon) && (
@@ -15,10 +16,11 @@ export const PrimaryButton = ({
         variant={variant}
         onClick={onClick}
         sx={{
+          ...customStyle,
           backgroundColor: bgColor,
           '&:hover': {
-            backgroundColor: colors.primary.hover
-          }
+            backgroundColor: colors.primary.hover,
+          },
         }}
       >
         {icon} {text}

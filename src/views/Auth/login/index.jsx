@@ -1,4 +1,4 @@
-import {Button, Checkbox, FormControlLabel, Typography} from '@mui/material'
+import {Avatar, Box, Button, Checkbox, Divider, FormControlLabel, Typography} from '@mui/material'
 import {useCallback} from 'react'
 import {useEffect, useState} from 'react'
 import {useForm, useWatch} from 'react-hook-form'
@@ -9,6 +9,8 @@ import ReactHookForm from '../../../components/common/React-Hook-Form'
 import {setRememberMeDetails} from '../../../store/reducers/auth'
 import {errorMessage} from '../../../store/reducers/notify'
 import {form, initialValues, validations} from './schema'
+import LoginAvatar from '../../../assets/images/profile-avatar.jpg'
+import withGoogleAuthProvider from '../../../components/higher-order-components/GoogleAuthProvider'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -64,6 +66,10 @@ const Login = () => {
 
   return (
     <>
+      <Avatar alt="Sign-in Avatar" src={LoginAvatar} sx={{width: 70, height: 70}} />
+      <Typography sx={{color: colors.primary.main, fontWeight: 800}} variant="h5">
+        Log In
+      </Typography>
       <ReactHookForm
         initialValues={initialValues}
         validations={validations}
@@ -79,12 +85,11 @@ const Login = () => {
           fontSize: '1rem',
         }}
       >
-        Or{' '}
+        Don't have an account?{' '}
         <Button
           sx={{
             textDecoration: 'none',
             fontWeight: 700,
-            fontSize: '1rem',
             color: colors.primary[500],
             padding: 0,
             '&:hover': {
@@ -101,4 +106,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withGoogleAuthProvider(Login)
