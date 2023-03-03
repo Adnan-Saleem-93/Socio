@@ -1,9 +1,10 @@
 import {Box} from '@mui/material'
 import {Navigate, Outlet} from 'react-router-dom'
+import useAuth from '../custom-hooks/useAuth'
 import Navbar from '../Navbar'
 
 const BasicLayout = () => {
-  const auth = localStorage.getItem('auth') ? true : false
+  const isAuthenticated = useAuth()
 
   return (
     <>
@@ -14,7 +15,7 @@ const BasicLayout = () => {
           maxHeight: '100vh',
         }}
       >
-        {!auth ? <Navigate to="/login" /> : <Outlet />}
+        {!isAuthenticated ? <Navigate to="/login" /> : <Outlet />}
       </Box>
     </>
   )

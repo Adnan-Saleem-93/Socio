@@ -3,9 +3,10 @@ import {Navigate, Outlet} from 'react-router-dom'
 import {authBG} from '../../assets/backgrounds'
 import {colors} from '../../assets/colors'
 import {centerAlignItem} from '../../utils/constants'
+import useAuth from '../custom-hooks/useAuth'
 
 const AuthLayout = () => {
-  const auth = localStorage.getItem('auth') ? true : false
+  const isAuthenticated = useAuth()
 
   return (
     <>
@@ -30,7 +31,7 @@ const AuthLayout = () => {
               padding: '1rem',
             }}
           >
-            {auth ? <Navigate to="/posts" /> : <Outlet />}
+            {isAuthenticated ? <Navigate to="/posts" /> : <Outlet />}
           </Box>
         </Box>
       </Box>

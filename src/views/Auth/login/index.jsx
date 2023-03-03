@@ -7,10 +7,10 @@ import {useNavigate} from 'react-router-dom'
 import {colors} from '../../../assets/colors'
 import ReactHookForm from '../../../components/common/React-Hook-Form'
 import {setRememberMeDetails} from '../../../store/reducers/auth'
-import {errorMessage} from '../../../store/reducers/notify'
 import {form, initialValues, validations} from './schema'
-import LoginAvatar from '../../../assets/images/profile-avatar.jpg'
 import withGoogleAuthProvider from '../../../components/higher-order-components/GoogleAuthProvider'
+import GoogleAuth from '../../../components/common/Google-Auth'
+import {onSubmit} from './model'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -35,16 +35,6 @@ const Login = () => {
   const usernameOrEmail = useWatch({control, name: 'usernameOrEmail'})
   const password = useWatch({control, name: 'password'})
 
-  const onSubmit = async (values) => {
-    try {
-      console.log(values)
-    } catch (error) {
-      dispatchAction(
-        errorMessage({title: 'Failed to Create Post', message: error?.response?.message})
-      )
-    }
-  }
-
   const renderRememberMe = () => {
     return (
       <FormControlLabel
@@ -66,20 +56,21 @@ const Login = () => {
 
   return (
     <>
-      <Avatar alt="Sign-in Avatar" src={LoginAvatar} sx={{width: 70, height: 70}} />
       <Typography sx={{color: colors.primary.main, fontWeight: 800}} variant="h5">
-        Log In
+        Log In To Your Account
       </Typography>
       <ReactHookForm
         initialValues={initialValues}
         validations={validations}
         form={form}
-        submitForm={onSubmit}
+        submitForm={(values) => onSubmit(values, dispatchAction)}
         buttons={buttons}
         renderRememberMe={renderRememberMe}
         customStyles={{alignItems: 'flex-start'}}
         control={control}
       />
+
+      <GoogleAuth isLogin={true} renderORSection={true} />
       <Typography
         sx={{
           fontSize: '1rem',
