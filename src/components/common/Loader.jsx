@@ -9,10 +9,10 @@ export default function Loader({size = 120}) {
         justifyContent: 'center',
         width: '100vw',
         height: '70vh',
-        maxhHeight: '75vh'
+        maxhHeight: '75vh',
       }}
     >
-      <CircularProgress color="primary" size={120} />
+      <CircularProgress color="primary" size={size} />
     </Box>
   )
 }
