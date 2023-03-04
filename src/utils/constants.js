@@ -9,7 +9,7 @@ export const ColorPalette = {
 }
 
 export const CommonTexts = {
-  APP_HEADER: 'Memoria',
+  APP_HEADER: 'Socio',
 }
 
 export const MenuNames = {
