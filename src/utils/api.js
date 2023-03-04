@@ -3,13 +3,21 @@ import {endpoints} from './constants'
 
 export const postAPIs = {
   CreatePost: async ({body}) => {
-    const response = await api.post(endpoints.CREATE_POST, body)
+    const response = await api.post(endpoints.Posts.CREATE_POST, body)
     return response?.data || null
-  }
+  },
+  Login: async ({body}) => {
+    const response = await api.post(endpoints.Auth.LOG_IN, body)
+    return response?.data || null
+  },
+  SignUp: async ({body}) => {
+    const response = await api.post(endpoints.Auth.SIGN_UP, body)
+    return response?.data || null
+  },
 }
 export const getAPIs = {
   GetPosts: async () => {
-    const response = await api.get(endpoints.GET_POSTS)
+    const response = await api.get(endpoints.Posts.GET_POSTS)
     return response?.data || null
-  }
+  },
 }

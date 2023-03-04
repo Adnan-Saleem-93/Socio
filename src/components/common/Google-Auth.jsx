@@ -5,14 +5,13 @@ import {useGoogleLogin} from '@react-oauth/google'
 import {useDispatch} from 'react-redux'
 import {errorMessage} from '../../store/reducers/notify'
 import {Typography} from '@mui/material'
-import moment from 'moment'
-import {authenticateUser} from '../../store/reducers/auth'
+import {authenticateUserWithGoogleLogin} from '../../store/reducers/auth'
 
 const GoogleAuth = ({isLogin = false, renderORSection = false}) => {
   const dispatchAction = useDispatch()
   const GoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      dispatchAction(authenticateUser(tokenResponse))
+      dispatchAction(authenticateUserWithGoogleLogin(tokenResponse))
     },
     onError: (error) => {
       dispatchAction(
@@ -35,7 +34,7 @@ const GoogleAuth = ({isLogin = false, renderORSection = false}) => {
             lineHeight: '0.1rem',
             margin: '10px 0 20px',
             '& span': {
-              background: '#fff',
+              background: colors.light.secondary,
               padding: '0 10px',
             },
           }}

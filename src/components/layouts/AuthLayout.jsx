@@ -23,7 +23,7 @@ const AuthLayout = () => {
             sx={{
               ...centerAlignItem,
               flexDirection: 'column',
-              background: colors.light.main,
+              background: colors.light.secondary,
               height: 'max-content',
               maxHeight: '75%',
               width: {xs: '80%', sm: '60%', md: '30%'},

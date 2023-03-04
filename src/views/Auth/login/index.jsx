@@ -11,9 +11,9 @@ import {form, initialValues, validations} from './schema'
 import withGoogleAuthProvider from '../../../components/higher-order-components/GoogleAuthProvider'
 import GoogleAuth from '../../../components/common/Google-Auth'
 import {onSubmit} from './model'
+import LoginSignupRedirect from '../../../components/common/Login-Signup-Redirect'
 
 const Login = () => {
-  const navigate = useNavigate()
   const dispatchAction = useDispatch()
   const buttons = [
     {
@@ -71,28 +71,11 @@ const Login = () => {
       />
 
       <GoogleAuth isLogin={true} renderORSection={true} />
-      <Typography
-        sx={{
-          fontSize: '1rem',
-        }}
-      >
-        Don't have an account?{' '}
-        <Button
-          sx={{
-            textDecoration: 'none',
-            fontWeight: 700,
-            color: colors.primary[500],
-            padding: 0,
-            '&:hover': {
-              color: colors.primary.main,
-              background: colors.light.main,
-            },
-          }}
-          onClick={() => navigate('/sign-up')}
-        >
-          Create a New Account
-        </Button>
-      </Typography>
+      <LoginSignupRedirect
+        question="Don't have an account?"
+        btnText="Create a New Account"
+        redirectTo="/sign-up"
+      />
     </>
   )
 }
