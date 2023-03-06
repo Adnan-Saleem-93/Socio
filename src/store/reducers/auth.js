@@ -20,9 +20,17 @@ export const authReducer = createSlice({
     authenticateUserWithEmail: (state, {payload: token}) => {
       state.token = token
     },
+    logOut: (state) => {
+      state.token = null
+      state.googleAuthToken = null
+    },
   },
 })
 
-export const {authenticateUserWithGoogleLogin, authenticateUserWithEmail, setRememberMeDetails} =
-  authReducer.actions
+export const {
+  authenticateUserWithGoogleLogin,
+  authenticateUserWithEmail,
+  setRememberMeDetails,
+  logOut,
+} = authReducer.actions
 export default authReducer.reducer
