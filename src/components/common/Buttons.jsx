@@ -1,6 +1,7 @@
-import {Button} from '@mui/material'
+import {Button, Typography} from '@mui/material'
 import React from 'react'
 import {colors} from '../../assets/colors'
+import {ButtonSpinner} from './Loader'
 
 export const PrimaryButton = ({
   variant = 'contained',
@@ -9,6 +10,8 @@ export const PrimaryButton = ({
   bgColor = colors.primary.main,
   icon = null,
   customStyle = null,
+  textStyles = null,
+  isLoading = false,
 }) => {
   return (
     (text || icon) && (
@@ -20,10 +23,16 @@ export const PrimaryButton = ({
           backgroundColor: bgColor,
           '&:hover': {
             backgroundColor: colors.primary.hover,
+            '.btn-text': {
+              color: colors.light.secondary,
+            },
           },
         }}
       >
-        {icon} {text}
+        {icon}{' '}
+        <Typography variant="span" className="btn-text" sx={textStyles}>
+          {isLoading ? <ButtonSpinner /> : text}
+        </Typography>
       </Button>
     )
   )

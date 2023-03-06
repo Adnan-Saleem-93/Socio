@@ -1,12 +1,13 @@
 import {Typography} from '@mui/material'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {colors} from '../../../assets/colors'
-import ReactHookForm from '../../../components/common/React-Hook-Form'
+import ReactHookForm from '../../../components/common/Form/React-Hook-Form'
 import {form, initialValues, validations} from './schema'
 import withGoogleAuthProvider from '../../../components/higher-order-components/GoogleAuthProvider'
 import {onSubmit} from './model'
-import GoogleAuth from '../../../components/common/Google-Auth'
+import GoogleAuth from '../../../components/common/Form/Google-Auth'
 import LoginSignupRedirect from '../../../components/common/Login-Signup-Redirect'
+import {useState} from 'react'
 
 const SignUp = () => {
   const buttons = [
@@ -24,6 +25,8 @@ const SignUp = () => {
     },
   ]
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const dispatchAction = useDispatch()
 
   return (
@@ -35,8 +38,9 @@ const SignUp = () => {
         initialValues={initialValues}
         validations={validations}
         form={form}
-        submitForm={(values) => onSubmit(values, dispatchAction)}
+        submitForm={(values) => onSubmit(values, dispatchAction, setIsLoading)}
         buttons={buttons}
+        btnLoading={isLoading}
       />
       <GoogleAuth isLogin={false} renderORSection={true} />
       <LoginSignupRedirect

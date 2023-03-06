@@ -1,11 +1,10 @@
-import {colors} from '../../assets/colors'
-import {PrimaryButton} from './Buttons'
-import GoogleIcon from '../../assets/images/google.png'
+import {colors} from '../../../assets/colors'
+import {PrimaryButton} from '../Buttons'
+import GoogleIcon from '../../../assets/images/google.png'
 import {useGoogleLogin} from '@react-oauth/google'
 import {useDispatch} from 'react-redux'
-import {errorMessage} from '../../store/reducers/notify'
-import {Typography} from '@mui/material'
-import {authenticateUserWithGoogleLogin} from '../../store/reducers/auth'
+import {errorMessage} from '../../../store/reducers/notify'
+import {authenticateUserWithGoogleLogin} from '../../../store/reducers/auth'
 
 const GoogleAuth = ({isLogin = false, renderORSection = false}) => {
   const dispatchAction = useDispatch()
@@ -24,29 +23,17 @@ const GoogleAuth = ({isLogin = false, renderORSection = false}) => {
   })
   return (
     <>
-      {renderORSection && (
-        <Typography
-          sx={{
-            fontSize: '1rem',
-            width: '90%',
-            textAlign: 'center',
-            borderBottom: '1px solid #000',
-            lineHeight: '0.1rem',
-            margin: '10px 0 20px',
-            '& span': {
-              background: colors.light.secondary,
-              padding: '0 10px',
-            },
-          }}
-        >
-          <span>OR</span>
-        </Typography>
-      )}
       <PrimaryButton
         text={` Sign ${isLogin ? 'In' : 'Up'} With Google`}
-        customStyle={{width: '90%', marginY: '1rem'}}
-        bgColor={colors.primary.hover}
+        customStyle={{
+          width: '90%',
+          marginBottom: '0.5rem',
+          boxShadow: 'none',
+          border: `1px solid ${colors.primary.hover}`,
+        }}
+        bgColor={colors.light.secondary}
         onClick={() => GoogleLogin()}
+        textStyles={{color: colors.primary.hover, fontWeight: 700}}
         icon={
           <img
             src={GoogleIcon}

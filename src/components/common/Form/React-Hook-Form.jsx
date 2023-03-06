@@ -1,12 +1,13 @@
 import {yupResolver} from '@hookform/resolvers/yup'
 import {Box, Button, Typography} from '@mui/material'
 import {Controller, useForm} from 'react-hook-form'
-import {colors} from '../../assets/colors'
-import Email from './Form/Email'
-import Password from './Form/Password'
-import Text from './Form/Text'
-import IconifyIcon from './Iconify-Icon'
-import {columnCenterAlignedFlexbox, FormTypes, Icons} from '../../utils/constants'
+import {colors} from '../../../assets/colors'
+import Email from './Email'
+import Password from './Password'
+import Text from './Text'
+import IconifyIcon from '../Iconify-Icon'
+import {columnCenterAlignedFlexbox, FormTypes, Icons} from '../../../utils/constants'
+import {ButtonSpinner} from '../Loader'
 
 const styles = {
   form: {
@@ -43,6 +44,7 @@ const ReactHookForm = ({
   renderRememberMe = null,
   customStyles = null,
   control = null,
+  btnLoading = false,
 }) => {
   const {
     control: localControl,
@@ -101,7 +103,7 @@ const ReactHookForm = ({
               fullWidth={true}
               onClick={onClick && onClick}
             >
-              {text}
+              {btnLoading ? <ButtonSpinner /> : text}
             </Button>
           )
         })}

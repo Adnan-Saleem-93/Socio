@@ -1,4 +1,9 @@
 import {Box, CircularProgress} from '@mui/material'
+import {colors} from '../../assets/colors'
+
+export const ButtonSpinner = ({size = 26}) => {
+  return <CircularProgress size={size} sx={{color: colors.light.main}} />
+}
 
 export default function Loader({size = 120}) {
   return (
