@@ -16,14 +16,14 @@ export const form = [
   },
 ]
 
-const [usernameOrEmail, password] = form
+const [email, password] = form
 
 export const initialValues = {
-  [usernameOrEmail.name]: '',
+  [email.name]: '',
   [password.name]: '',
 }
 
 export const validations = Yup.object().shape({
-  [usernameOrEmail.name]: Yup.string().required(usernameOrEmail.error),
+  [email.name]: Yup.string().required(email.error),
   [password.name]: Yup.string().required(password.error),
 })

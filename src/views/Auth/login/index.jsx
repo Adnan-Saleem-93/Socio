@@ -1,39 +1,39 @@
-import {Avatar, Box, Button, Checkbox, Divider, FormControlLabel, Typography} from '@mui/material'
-import {useCallback} from 'react'
-import {useEffect, useState} from 'react'
+import {Checkbox, FormControlLabel, Typography} from '@mui/material'
+import {useState} from 'react'
 import {useForm, useWatch} from 'react-hook-form'
 import {useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
 import {colors} from '../../../assets/colors'
-import ReactHookForm from '../../../components/common/React-Hook-Form'
+import ReactHookForm from '../../../components/common/Form/React-Hook-Form'
 import {setRememberMeDetails} from '../../../store/reducers/auth'
 import {form, initialValues, validations} from './schema'
 import withGoogleAuthProvider from '../../../components/higher-order-components/GoogleAuthProvider'
-import GoogleAuth from '../../../components/common/Google-Auth'
+import GoogleAuth from '../../../components/common/Form/Google-Auth'
 import {onSubmit} from './model'
 import LoginSignupRedirect from '../../../components/common/Login-Signup-Redirect'
 
-const Login = () => {
-  const dispatchAction = useDispatch()
-  const buttons = [
-    {
-      text: 'Log In',
-      variant: 'contained',
-      type: 'submit',
-      onClick: null,
-      customStyles: {
-        backgroundColor: `${colors.primary.main} !important`,
-        '&:hover': {
-          backgroundColor: `${colors.primary.hover} !important`,
-        },
+const buttons = [
+  {
+    text: 'Log In',
+    variant: 'contained',
+    type: 'submit',
+    onClick: null,
+    customStyles: {
+      backgroundColor: `${colors.primary.main} !important`,
+      '&:hover': {
+        backgroundColor: `${colors.primary.hover} !important`,
       },
     },
-  ]
+  },
+]
+
+const Login = () => {
+  const dispatchAction = useDispatch()
   const [rememberMe, setRememberMe] = useState(false)
 
   const {control} = useForm()
-  const usernameOrEmail = useWatch({control, name: 'usernameOrEmail'})
+  const email = useWatch({control, name: 'email'})
   const password = useWatch({control, name: 'password'})
+  const [isLoading, setIsLoading] = useState(false)
 
   const renderRememberMe = () => {
     return (
@@ -44,15 +44,11 @@ const Login = () => {
     )
   }
 
-  const handleRememberMe = useCallback(() => {
+  const handleRememberMe = () => {
     if (rememberMe) {
-      dispatchAction(setRememberMeDetails({usernameOrEmail, password}))
+      dispatchAction(setRememberMeDetails({email, password}))
     }
-  }, [rememberMe])
-
-  useEffect(() => {
-    handleRememberMe()
-  }, [handleRememberMe])
+  }
 
   return (
     <>
@@ -63,11 +59,11 @@ const Login = () => {
         initialValues={initialValues}
         validations={validations}
         form={form}
-        submitForm={(values) => onSubmit(values, dispatchAction)}
+        submitForm={(values) => onSubmit(values, dispatchAction, setIsLoading, handleRememberMe)}
         buttons={buttons}
         renderRememberMe={renderRememberMe}
         customStyles={{alignItems: 'flex-start'}}
-        control={control}
+        btnLoading={isLoading}
       />
 
       <GoogleAuth isLogin={true} renderORSection={true} />

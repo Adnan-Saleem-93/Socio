@@ -1,5 +1,5 @@
 import {Typography} from '@mui/material'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {colors} from '../../../assets/colors'
 import ReactHookForm from '../../../components/common/Form/React-Hook-Form'
 import {form, initialValues, validations} from './schema'
@@ -9,22 +9,22 @@ import GoogleAuth from '../../../components/common/Form/Google-Auth'
 import LoginSignupRedirect from '../../../components/common/Login-Signup-Redirect'
 import {useState} from 'react'
 
-const SignUp = () => {
-  const buttons = [
-    {
-      text: 'Register',
-      variant: 'contained',
-      type: 'submit',
-      onClick: null,
-      customStyles: {
-        backgroundColor: `${colors.primary.main} !important`,
-        '&:hover': {
-          backgroundColor: `${colors.primary.hover} !important`,
-        },
+const buttons = [
+  {
+    text: 'Register',
+    variant: 'contained',
+    type: 'submit',
+    onClick: null,
+    customStyles: {
+      backgroundColor: `${colors.primary.main} !important`,
+      '&:hover': {
+        backgroundColor: `${colors.primary.hover} !important`,
       },
     },
-  ]
+  },
+]
 
+const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const dispatchAction = useDispatch()
