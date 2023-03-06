@@ -45,7 +45,7 @@ export const centerAlignItem = {
 }
 
 export const endpoints = {
-  Posts: {CREATE_POST: '/posts', GET_POSTS: '/postss'},
+  Posts: {CREATE_POST: '/posts', GET_POSTS: '/posts'},
   Auth: {LOG_IN: '/auth/login', SIGN_UP: '/auth/sign-up'},
 }
 
