@@ -4,7 +4,6 @@ import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
 import {Icons} from '../../utils/constants'
 import postStyles from '../../assets/custom-css/post.module.css'
-import Menu from './Menu'
 
 const styles = {
   card: {
@@ -36,7 +35,9 @@ const PostCard = ({
   return (
     <Card sx={{...styles.card}}>
       <article className={postStyles.article}>
-        <img className={postStyles.image} height="250" src={selectedFile} alt="background" />
+        {selectedFile && (
+          <img className={postStyles.image} height="250" src={selectedFile} alt="background" />
+        )}
 
         <Typography variant="h6" fontWeight={800} className={postStyles.header}>
           {author}
@@ -44,7 +45,6 @@ const PostCard = ({
         <Typography variant="h6" fontWeight={800} className={postStyles.date}>
           {moment(createdAt).format('MMM DD, YYYY hh:mm A')}
         </Typography>
-        <Menu />
       </article>
       <CardContent sx={{padding: 1, paddingBottom: 0}}>
         <Typography variant="h6" fontWeight={800} sx={{...styles.description}}>

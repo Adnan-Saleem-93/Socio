@@ -179,8 +179,11 @@ const CreatePost = () => {
       <form
         onSubmit={handleSubmit(async (values) => {
           let result = await preSubmit(selectedFile, dispatchAction)
-          if (result) {
+          if (selectedFile && result) {
             let updatedValues = {...values, selectedFile: result}
+            onSubmit(updatedValues, dispatchAction, navigate)
+          } else {
+            let updatedValues = {...values, selectedFile: null}
             onSubmit(updatedValues, dispatchAction, navigate)
           }
         })}

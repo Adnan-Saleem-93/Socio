@@ -16,7 +16,7 @@ const postReducer = createSlice({
       })
       .addCase(getPosts.fulfilled, (state, {payload}) => {
         state.isLoading = false
-        if (payload.length) {
+        if (payload?.length) {
           state.posts = payload
         }
       })
@@ -26,13 +26,12 @@ const postReducer = createSlice({
   },
 })
 
-// export const {getPosts} = postReducer.actions
 export default postReducer.reducer
 
 export const getPosts = createAsyncThunk('posts/getPosts', async () => {
   try {
     const response = await getAPIs.GetPosts()
-    return response
+    return response?.data
   } catch (error) {
     return error
   }

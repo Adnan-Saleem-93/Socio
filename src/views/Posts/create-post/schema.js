@@ -6,29 +6,29 @@ export const form = [
     name: 'title',
     label: 'Title',
     type: FormTypes.TEXT,
-    error: 'Title is required.'
+    error: 'Title is required.',
   },
   {
     name: 'message',
     label: 'Message',
     type: FormTypes.TEXT,
-    error: 'Message is required.'
+    error: 'Message is required.',
   },
   {
     name: 'author',
     label: 'Author',
-    type: FormTypes.TEXT
+    type: FormTypes.TEXT,
   },
   {
     name: 'tags',
     label: 'Tags',
-    type: FormTypes.TEXT
+    type: FormTypes.TEXT,
   },
   {
     name: 'selectedFile',
     label: 'File',
-    type: FormTypes.FILE
-  }
+    type: FormTypes.FILE,
+  },
 ]
 
 const [title, message, author, tags, selectedFile] = form
@@ -38,7 +38,7 @@ export const initialValues = {
   [message.name]: '',
   [author.name]: '',
   [tags.name]: '',
-  [selectedFile.name]: ''
+  [selectedFile.name]: '',
 }
 
 export const validations = Yup.object().shape({
@@ -46,5 +46,5 @@ export const validations = Yup.object().shape({
   [message.name]: Yup.string().required(message.error),
   [author.name]: Yup.string(),
   [tags.name]: Yup.string(),
-  [selectedFile.name]: Yup.object().nullable()
+  [selectedFile.name]: Yup.object().nullable(),
 })

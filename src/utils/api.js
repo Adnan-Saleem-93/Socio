@@ -18,6 +18,6 @@ export const postAPIs = {
 export const getAPIs = {
   GetPosts: async () => {
     const response = await api.get(endpoints.Posts.GET_POSTS)
-    return response?.data || null
+    return response || null
   },
 }
