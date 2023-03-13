@@ -6,7 +6,7 @@ const FileInput = ({...field}) => {
       type="file"
       multiple={false}
       onDone={(file) => {
-        field.setValue('selectedFile', file.base64)
+        field.setValue('selectedFile', file)
       }}
     />
   )

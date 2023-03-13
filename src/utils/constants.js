@@ -44,8 +44,11 @@ export const centerAlignItem = {
   width: '100%',
 }
 
+export const URLs = {
+  BASE_URL: 'http://localhost:5000',
+}
 export const endpoints = {
-  Posts: {CREATE_POST: '/posts', GET_POSTS: '/postss'},
+  Posts: {CREATE_POST: '/posts', GET_POSTS: '/posts'},
   Auth: {LOG_IN: '/auth/login', SIGN_UP: '/auth/sign-up'},
 }
 

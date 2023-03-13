@@ -11,9 +11,8 @@ import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
 import PageHeader from '../../../components/common/Header'
 import {useDispatch} from 'react-redux'
-import {errorMessage, successMessage} from '../../../store/reducers/notify'
-import {postAPIs} from './../../../utils/api'
 import {useNavigate} from 'react-router-dom'
+import {onSubmit, preSubmit, uploadFileToFirebase} from './model'
 
 const styles = {
   form: {
@@ -130,7 +129,7 @@ const CreatePost = () => {
       )
     })
   }
-  const generateImagePreviewURL = (fileReader, isCancel) => {
+  const generateImagePreviewURL = () => {
     try {
       setIsImageLoading(true)
     } catch (error) {
@@ -166,7 +165,7 @@ const CreatePost = () => {
         {isImageLoading ? (
           <CircularProgress size={80} sx={{color: colors.primary.main}} />
         ) : selectedFile ? (
-          <img src={`${selectedFile}`} width="100%" height="100%" alt={selectedFile.name} />
+          <img src={`${selectedFile.base64}`} width="100%" height="100%" alt={selectedFile.name} />
         ) : (
           <Typography variant="h5">No File Selected</Typography>
         )}
@@ -174,25 +173,18 @@ const CreatePost = () => {
     )
   }
 
-  const onSubmit = async (values) => {
-    try {
-      let body = {...values, selectedFile}
-
-      const response = await postAPIs.CreatePost({body})
-      if (response) {
-        dispatchAction(successMessage({title: 'Success!', message: 'Post Created Successfully'}))
-        navigate('/posts')
-      }
-    } catch (error) {
-      dispatchAction(
-        errorMessage({title: 'Failed to Create Post', message: error?.response?.message})
-      )
-    }
-  }
   return (
     <>
       <PageHeader text="Create New Post" />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(async (values) => {
+          let result = await preSubmit(selectedFile, dispatchAction)
+          if (result) {
+            let updatedValues = {...values, selectedFile: result}
+            onSubmit(updatedValues, dispatchAction, navigate)
+          }
+        })}
+      >
         <Box
           sx={{
             display: 'flex',
