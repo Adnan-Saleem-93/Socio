@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux'
 import {errorMessage} from '../../../store/reducers/notify'
 import {authenticateUserWithGoogleLogin} from '../../../store/reducers/auth'
 
-const GoogleAuth = ({isLogin = false, renderORSection = false}) => {
+const GoogleAuth = ({isLogin = false}) => {
   const dispatchAction = useDispatch()
   const GoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -24,14 +24,17 @@ const GoogleAuth = ({isLogin = false, renderORSection = false}) => {
   return (
     <>
       <PrimaryButton
-        text={` Sign ${isLogin ? 'In' : 'Up'} With Google`}
+        text={`Google`}
         customStyle={{
           width: '90%',
           marginBottom: '0.5rem',
           boxShadow: 'none',
           border: `1px solid ${colors.primary.hover}`,
+          hoverColor: colors.light.secondary,
+          hoverTextColor: colors.dark.main,
+          fontSize: '1rem',
         }}
-        bgColor={colors.light.secondary}
+        bgColor={colors.light.main}
         onClick={() => GoogleLogin()}
         textStyles={{color: colors.primary.hover, fontWeight: 700}}
         icon={

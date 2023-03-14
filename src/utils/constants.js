@@ -6,6 +6,7 @@ export const ColorPalette = {
   MAXIMUM_YELLOW: '#F5F749',
   CINNEBAR: '#F24236',
   WHITE: '#FFFFFF',
+  BORDER_COLOR: '#00000063',
 }
 
 export const CommonTexts = {

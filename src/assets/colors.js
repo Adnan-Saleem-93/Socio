@@ -19,4 +19,7 @@ export const colors = {
   error: {
     main: ColorPalette.CINNEBAR,
   },
+  border: {
+    main: ColorPalette.BORDER_COLOR,
+  },
 }

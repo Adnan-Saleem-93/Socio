@@ -20,7 +20,7 @@ const LoginSignupRedirect = ({question, btnText, redirectTo}) => {
           padding: 0,
           '&:hover': {
             color: colors.primary.main,
-            background: colors.light.secondary,
+            background: colors.light.main,
           },
         }}
         onClick={() => navigate(redirectTo)}

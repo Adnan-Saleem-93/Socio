@@ -1,9 +1,9 @@
 import {Box} from '@mui/material'
 import {Navigate, Outlet} from 'react-router-dom'
-import {authBG} from '../../assets/backgrounds'
 import {colors} from '../../assets/colors'
 import {centerAlignItem} from '../../utils/constants'
 import useAuth from '../custom-hooks/useAuth'
+import bgImage from '../../assets/images/auth-vector.jpg'
 
 const AuthLayout = () => {
   const isAuthenticated = useAuth()
@@ -15,19 +15,19 @@ const AuthLayout = () => {
           maxHeight: '100vh',
           height: '100vh',
           width: '100vw',
-          backgroundImage: `url("${authBG}")`,
         }}
       >
-        <Box sx={{...centerAlignItem}}>
+        <Box sx={{...centerAlignItem, justifyContent: 'space-evenly'}}>
+          <img src={bgImage} alt="login" height="50%" width="30%" />
           <Box
             sx={{
               ...centerAlignItem,
               flexDirection: 'column',
-              background: colors.light.secondary,
+              background: colors.light.main,
+              border: `2px solid ${colors.border.main}`,
               height: 'auto',
               maxHeight: '100%',
               width: {xs: '80%', sm: '60%', md: '30%'},
-              borderRadius: 3,
               padding: '1rem',
             }}
           >

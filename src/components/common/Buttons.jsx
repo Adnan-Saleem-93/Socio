@@ -20,11 +20,12 @@ export const PrimaryButton = ({
         onClick={onClick}
         sx={{
           ...customStyle,
+          boxShadow: 'none !important',
           backgroundColor: bgColor,
           '&:hover': {
-            backgroundColor: colors.primary.hover,
+            backgroundColor: customStyle?.hoverColor || colors.primary.hover,
             '.btn-text': {
-              color: colors.light.secondary,
+              color: customStyle.hoverTextColor || colors.light.secondary,
             },
           },
         }}
