@@ -24,8 +24,8 @@ export const PrimaryButton = ({
           backgroundColor: bgColor,
           '&:hover': {
             backgroundColor: customStyle?.hoverColor || colors.primary.hover,
-            '.btn-text': {
-              color: customStyle.hoverTextColor || colors.light.secondary,
+            '.btn-text, .iconify': {
+              color: `${customStyle?.hoverTextColor || colors.light.main} !important`,
             },
           },
         }}

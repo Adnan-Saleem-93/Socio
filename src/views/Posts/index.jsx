@@ -28,9 +28,13 @@ const Posts = () => {
     if (!posts?.length) {
       return <DataNotFound />
     }
-    return posts?.map((post, index) => {
-      return <PostCard {...post} key={`post-card-${index + 1}`} />
-    })
+    return (
+      <Box sx={{marginTop: 2}}>
+        {posts?.map((post, index) => {
+          return <PostCard {...post} key={`post-card-${index + 1}`} />
+        })}
+      </Box>
+    )
   }
   return (
     <>
@@ -39,12 +43,12 @@ const Posts = () => {
         button={
           <PrimaryButton
             icon={<IconifyIcon icon={Icons.ADD} color={colors.light.main} />}
-            text="Create New Post"
+            text="New Post"
             onClick={() => navigate('/create-post')}
           />
         }
       />
-      {isLoading ? <Loader size={80} /> : <Box sx={{marginTop: 2}}>{renderPostCards()}</Box>}
+      {isLoading ? <Loader size={80} /> : renderPostCards()}
     </>
   )
 }

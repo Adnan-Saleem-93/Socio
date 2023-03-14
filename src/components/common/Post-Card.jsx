@@ -4,6 +4,7 @@ import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
 import {Icons} from '../../utils/constants'
 import postStyles from '../../assets/custom-css/post.module.css'
+import {useSelector} from 'react-redux'
 
 const styles = {
   card: {
@@ -25,6 +26,7 @@ const PostCard = ({
   createdAt = null,
   likes = 0,
 }) => {
+  const {googleAuthToken} = useSelector((state) => state.auth)
   const renderMessage = () => {
     if (message.length >= 30) {
       return message.substring(0, 29)
@@ -43,7 +45,7 @@ const PostCard = ({
           {author}
         </Typography>
         <Typography variant="h6" fontWeight={800} className={postStyles.date}>
-          {moment(createdAt).format('MMM DD, YYYY hh:mm A')}
+          {moment(createdAt).fromNow()}
         </Typography>
       </article>
       <CardContent sx={{padding: 1, paddingBottom: 0}}>
