@@ -36,3 +36,12 @@ export const getPosts = createAsyncThunk('posts/getPosts', async () => {
     return error
   }
 })
+
+export const getPostById = createAsyncThunk('posts/getPostById', async () => {
+  try {
+    const response = await getAPIs.GetPostById()
+    return response?.data
+  } catch (error) {
+    return error
+  }
+})

@@ -49,7 +49,7 @@ export const URLs = {
   BASE_URL: 'http://localhost:5000',
 }
 export const endpoints = {
-  Posts: {CREATE_POST: '/posts', GET_POSTS: '/posts'},
+  Posts: {CREATE_POST: '/posts', GET_POSTS: '/posts', GET_POST_BY_ID: '/posts/:id'},
   Auth: {LOG_IN: '/auth/login', SIGN_UP: '/auth/sign-up'},
 }
 

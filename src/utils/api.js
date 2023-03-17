@@ -20,4 +20,8 @@ export const getAPIs = {
     const response = await api.get(endpoints.Posts.GET_POSTS)
     return response || null
   },
+  GetPostById: async () => {
+    const response = await api.get(endpoints.Posts.GET_POST_BY_ID)
+    return response || null
+  },
 }
