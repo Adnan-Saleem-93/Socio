@@ -6,6 +6,7 @@ import SignUp from '../views/Auth/sign-up'
 import ErrorPage from '../views/ErrorPage'
 import Posts from '../views/Posts'
 import CreatePost from '../views/Posts/create-post'
+import ProfileSettings from '../views/Profile'
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/create-post',
         element: <CreatePost />,
+      },
+      {
+        path: '/profile-settings',
+        element: <ProfileSettings />,
       },
     ],
   },

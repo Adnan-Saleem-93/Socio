@@ -1,19 +1,26 @@
-import Typography from '@mui/material/Typography'
+import {useState} from 'react'
+
+// material icons
 import AddIcon from '@mui/icons-material/Add'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
 import RecentActorsIcon from '@mui/icons-material/RecentActors'
 import SettingsIcon from '@mui/icons-material/Settings'
-import {useState} from 'react'
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 import MuiDrawer from '@mui/material/Drawer'
-import MuiAppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import List from '@mui/material/List'
-import {Box} from '@mui/material'
+
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from '@mui/material'
 import {styled} from '@mui/material/styles'
 import {colors} from '../../assets/colors'
+import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {logOut} from '../../store/reducers/auth'
 
 const drawerWidth = 240
 
@@ -47,24 +54,6 @@ const DrawerHeader = styled('div')(({theme}) => ({
   ...theme.mixins.toolbar,
 }))
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({theme, open}) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}))
-
 const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
   ({theme, open}) => ({
     width: drawerWidth,
@@ -82,31 +71,6 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
   })
 )
 
-const AppBarComponent = ({open = true}) => {
-  return (
-    <AppBar
-      position="fixed"
-      open={open}
-      sx={{
-        background: colors.light.main,
-        boxShadow: 'none',
-        borderBottom: `1px solid #0000001f`,
-      }}
-    >
-      <Toolbar>
-        <Typography
-          variant="h4"
-          noWrap
-          component="div"
-          sx={{color: colors.primary.main, fontWeight: 700}}
-        >
-          Posts
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  )
-}
-
 const Header = () => {
   return (
     <DrawerHeader sx={{justifyContent: 'center'}}>
@@ -118,30 +82,36 @@ const Header = () => {
 }
 
 const PostListItemsSection = () => {
+  const navigate = useNavigate()
   const items = [
     {
       key: 1,
       text: 'Create New Post',
       icon: <AddIcon />,
+      clickEvent: () => navigate('/create-post'),
     },
     {
       key: 2,
       text: 'Posts',
       icon: <RecentActorsIcon />,
+      clickEvent: () => navigate('/posts'),
     },
   ]
 
   return (
     <List>
       {items.map((item) => {
-        const {key, text, icon} = item
+        const {key, text, icon, clickEvent} = item
         return (
-          <ListItem key={item.key} disablePadding sx={{display: 'block'}}>
+          <ListItem key={key} disablePadding sx={{display: 'block'}}>
             <ListItemButton
               sx={{
                 minHeight: 48,
                 justifyContent: 'center',
                 px: 2.5,
+                ...(key === 1 && {
+                  color: colors.primary.main,
+                }),
                 '&:hover, &:hover .MuiListItemIcon-root': {
                   ...(key === 1 && {
                     backgroundColor: colors.primary.main,
@@ -150,12 +120,16 @@ const PostListItemsSection = () => {
                   }),
                 },
               }}
+              onClick={clickEvent}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
                   mr: 3,
                   justifyContent: 'center',
+                  ...(key === 1 && {
+                    color: colors.primary.main,
+                  }),
                 }}
               >
                 {icon}
@@ -178,31 +152,36 @@ const PostListItemsSection = () => {
   )
 }
 
-const AccountListItemsSection = ({open = true}) => {
+const AccountListItemsSection = () => {
+  const navigate = useNavigate()
+  const dispatchAction = useDispatch()
   const items = [
     {
       key: 1,
       text: 'Profile Settings',
       icon: <SettingsIcon />,
+      clickEvent: () => navigate('/profile-settings'),
     },
     {
       key: 2,
       text: 'Log Out',
-      icon: <RecentActorsIcon />,
+      icon: <PowerSettingsNewIcon />,
+      clickEvent: () => dispatchAction(logOut()),
     },
   ]
   return (
     <List>
       {items.map((item) => {
-        const {key, text, icon} = item
+        const {key, text, icon, clickEvent} = item
         return (
           <ListItem key={key} disablePadding sx={{display: 'block'}}>
             <ListItemButton
               sx={{
                 minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
+                justifyContent: 'center',
                 px: 2.5,
               }}
+              onClick={clickEvent}
             >
               <ListItemIcon
                 sx={{
@@ -227,7 +206,6 @@ const Sidebar = () => {
 
   return (
     <>
-      <AppBarComponent />
       <Drawer variant="permanent" open={open}>
         <Header />
         <Box display="flex" justifyContent="space-between" flexDirection="column" height="100vh">

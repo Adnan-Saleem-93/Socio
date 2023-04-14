@@ -12,9 +12,9 @@ export default function Loader({size = 120}) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100vw',
-        height: '70vh',
+        height: 'calc(100vh - 98px)',
         maxhHeight: '75vh',
+        margin: 0,
       }}
     >
       <CircularProgress color="primary" size={size} />

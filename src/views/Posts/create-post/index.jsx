@@ -18,7 +18,6 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '1rem',
     width: {md: '45%', sm: '65%', xs: '100%'},
     borderColor: colors.dark.main,
   },
@@ -175,7 +174,6 @@ const CreatePost = () => {
 
   return (
     <>
-      <PageHeader text="Create New Post" />
       <form
         onSubmit={handleSubmit(async (values) => {
           let result = await preSubmit(selectedFile, dispatchAction)
