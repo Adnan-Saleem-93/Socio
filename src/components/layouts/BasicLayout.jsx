@@ -1,24 +1,20 @@
-import {Box} from '@mui/material'
-import {Navigate, Outlet} from 'react-router-dom'
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
 import useAuth from '../custom-hooks/useAuth'
-import Navbar from '../Navbar'
+import {Navigate, Outlet} from 'react-router-dom'
+import Sidebar from '../Sidebar'
 
-const BasicLayout = () => {
+export default function BasicLayout() {
   const isAuthenticated = useAuth()
 
   return (
-    <>
-      <Navbar />
-      <Box
-        sx={{
-          margin: '1rem',
-          maxHeight: '100vh',
-        }}
-      >
-        {!isAuthenticated ? <Navigate to="/login" /> : <Outlet />}
+    <Box sx={{display: 'flex'}}>
+      <CssBaseline />
+
+      <Sidebar />
+      <Box component="main" sx={{flexGrow: 1, p: 3}}>
+        <Box sx={{}}>{!isAuthenticated ? <Navigate to="/login" /> : <Outlet />}</Box>
       </Box>
-    </>
+    </Box>
   )
 }
-
-export default BasicLayout
