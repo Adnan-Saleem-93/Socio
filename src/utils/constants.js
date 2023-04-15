@@ -84,7 +84,7 @@ export const columnCenterAlignedFlexbox = {
 
 export const Icons = {
   SHARE: 'material-symbols:share',
-  LIKE: 'mdi:cards-heart',
+  LIKE: 'fa:thumbs-up',
   AVATAR: 'carbon:user-avatar-filled',
   AVATAR_ALT: 'carbon:user-avatar-filled-alt',
   MENU_VERTICAL: 'carbon:overflow-menu-vertical',

@@ -22,7 +22,14 @@ const Posts = () => {
       return <DataNotFound />
     }
     return (
-      <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         {posts?.map((post, index) => {
           return <PostCard {...post} key={`post-card-${index + 1}`} />
         })}

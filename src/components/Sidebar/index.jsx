@@ -110,14 +110,17 @@ const PostListItemsSection = () => {
                 justifyContent: 'center',
                 px: 2.5,
                 ...(key === 1 && {
-                  color: colors.primary.main,
+                  backgroundColor: colors.primary.main,
+                  color: colors.light.main,
                 }),
                 '&:hover, &:hover .MuiListItemIcon-root': {
-                  ...(key === 1 && {
-                    backgroundColor: colors.primary.main,
-                    color: colors.light.main,
-                    fontWeight: 800,
-                  }),
+                  ...(key === 1
+                    ? {
+                        backgroundColor: colors.primary.hover,
+                        color: colors.light.main,
+                        fontWeight: 800,
+                      }
+                    : {backgroundColor: '#ece6e6'}),
                 },
               }}
               onClick={clickEvent}
@@ -128,7 +131,7 @@ const PostListItemsSection = () => {
                   mr: 3,
                   justifyContent: 'center',
                   ...(key === 1 && {
-                    color: colors.primary.main,
+                    color: colors.light.main,
                   }),
                 }}
               >
@@ -180,6 +183,9 @@ const AccountListItemsSection = () => {
                 minHeight: 48,
                 justifyContent: 'center',
                 px: 2.5,
+                '&:hover': {
+                  backgroundColor: '#ece6e6',
+                },
               }}
               onClick={clickEvent}
             >
