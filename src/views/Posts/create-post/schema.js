@@ -3,21 +3,10 @@ import {FormTypes} from '../../../utils/constants.js'
 
 export const form = [
   {
-    name: 'title',
-    label: 'Title',
-    type: FormTypes.TEXT,
-    error: 'Title is required.',
-  },
-  {
     name: 'message',
     label: 'Message',
     type: FormTypes.TEXT,
     error: 'Message is required.',
-  },
-  {
-    name: 'author',
-    label: 'Author',
-    type: FormTypes.TEXT,
   },
   {
     name: 'tags',
@@ -31,20 +20,16 @@ export const form = [
   },
 ]
 
-const [title, message, author, tags, selectedFile] = form
+const [message, tags, selectedFile] = form
 
 export const initialValues = {
-  [title.name]: '',
   [message.name]: '',
-  [author.name]: '',
   [tags.name]: '',
   [selectedFile.name]: '',
 }
 
 export const validations = Yup.object().shape({
-  [title.name]: Yup.string().required(title.error),
   [message.name]: Yup.string().required(message.error),
-  [author.name]: Yup.string(),
   [tags.name]: Yup.string(),
   [selectedFile.name]: Yup.object().nullable(),
 })

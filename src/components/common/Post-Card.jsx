@@ -9,14 +9,14 @@ import postStyles from '../../assets/custom-css/post.module.css'
 const styles = {
   card: {
     boxShadow: 'none !important',
-    border: `1px solid ${colors.error.main}`,
-    minWidth: '100%',
+    border: `1px solid ${colors.dark.main}`,
+    minWidth: '90%',
+    maxWidth: '90%',
     margin: 1,
   },
   avatar: {backgroundColor: colors.primary.main, width: 40, height: 40},
   icon: {width: 40, height: 40, color: colors.dark.main},
   description: {color: colors.dark.main},
-  actions: {padding: 0},
 }
 
 const TimeStamp = ({createdAt}) => {
@@ -37,7 +37,7 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
     return message
   }
   return (
-    <CardContent sx={{padding: 1, paddingBottom: 0}}>
+    <CardContent sx={{padding: 0}}>
       <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
         <Typography variant="h6" fontWeight={800} className={postStyles.header}>
           {author}
@@ -51,8 +51,36 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
   )
 }
 
+const Actions = ({likes}) => {
+  return (
+    <CardActions disableSpacing sx={{padding: 0, justifyContent: 'space-between'}}>
+      <Tooltip
+        title="Like Post"
+        arrow
+        placement="top"
+        sx={{
+          '& .MuiTooltip-tooltip': {
+            backgroundColor: `${colors.dark.main} !important`,
+          },
+        }}
+      >
+        <IconButton aria-label="like-post">
+          <IconifyIcon icon={Icons.LIKE} color={colors.primary.main} />
+          <Typography variant="subtitle1" sx={{...styles.description, marginLeft: 0.5}}>
+            {likes}
+          </Typography>
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Delete Post" arrow placement="top">
+        <IconButton aria-label="Delete Post">
+          <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
+        </IconButton>
+      </Tooltip>
+    </CardActions>
+  )
+}
+
 const PostCard = ({
-  title = '',
   message = '',
   selectedFile = null,
   author = null,
@@ -67,32 +95,11 @@ const PostCard = ({
         <img className={postStyles.image} height="250" src={selectedFile} alt="background" />
       )}
 
-      <Content createdAt={createdAt} author={author} message={message} />
+      <Box sx={{padding: 1.5}}>
+        <Content createdAt={createdAt} author={author} message={message} />
 
-      <CardActions disableSpacing sx={{...styles.actions, justifyContent: 'space-between'}}>
-        <Tooltip
-          title="Like Post"
-          arrow
-          placement="top"
-          sx={{
-            '& .MuiTooltip-tooltip': {
-              backgroundColor: `${colors.dark.main} !important`,
-            },
-          }}
-        >
-          <IconButton aria-label="like-post">
-            <IconifyIcon icon={Icons.LIKE} color={colors.primary.main} />
-            <Typography variant="subtitle1" sx={{...styles.description, marginLeft: 0.5}}>
-              {likes}
-            </Typography>
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Delete Post" arrow placement="top">
-          <IconButton aria-label="Delete Post">
-            <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
-          </IconButton>
-        </Tooltip>
-      </CardActions>
+        <Actions likes={likes} />
+      </Box>
     </Card>
   )
 }
