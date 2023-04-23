@@ -5,7 +5,7 @@ export const form = [
   {
     name: 'message',
     label: 'Message',
-    type: FormTypes.TEXT,
+    type: FormTypes.TEXTAREA,
     error: 'Message is required.',
   },
   {

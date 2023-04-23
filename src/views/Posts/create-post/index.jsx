@@ -9,10 +9,10 @@ import IconifyIcon from '../../../components/common/Iconify-Icon'
 import FileInput from '../../../components/common/Form/File-Input'
 import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
-import PageHeader from '../../../components/common/Header'
 import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {onSubmit, preSubmit, uploadFileToFirebase} from './model'
+import {onSubmit, preSubmit} from './model'
+import TextArea from '../../../components/common/Form/TextArea'
 
 const styles = {
   form: {
@@ -113,6 +113,8 @@ const CreatePost = () => {
                 />
               ) : type === FormTypes.FILE ? (
                 <FileInput {...field} setValue={setValue} />
+              ) : type === FormTypes.TEXTAREA ? (
+                <TextArea label={label} isError={isError} {...field} />
               ) : null
             }}
           />

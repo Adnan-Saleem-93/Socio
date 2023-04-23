@@ -1,10 +1,9 @@
-import {Box, Card, CardActions, CardContent, IconButton, Tooltip, Typography} from '@mui/material'
+import {Box, Card, CardActions, CardContent, IconButton, Typography} from '@mui/material'
 import {colors} from '../../assets/colors'
 import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
 import {Icons} from '../../utils/constants'
 import postStyles from '../../assets/custom-css/post.module.css'
-// import {useSelector} from 'react-redux'
 
 const styles = {
   card: {
@@ -54,28 +53,16 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
 const Actions = ({likes}) => {
   return (
     <CardActions disableSpacing sx={{padding: 0, justifyContent: 'space-between'}}>
-      <Tooltip
-        title="Like Post"
-        arrow
-        placement="top"
-        sx={{
-          '& .MuiTooltip-tooltip': {
-            backgroundColor: `${colors.dark.main} !important`,
-          },
-        }}
-      >
-        <IconButton aria-label="like-post">
-          <IconifyIcon icon={Icons.LIKE} color={colors.primary.main} />
-          <Typography variant="subtitle1" sx={{...styles.description, marginLeft: 0.5}}>
-            {likes}
-          </Typography>
-        </IconButton>
-      </Tooltip>
-      <Tooltip title="Delete Post" arrow placement="top">
-        <IconButton aria-label="Delete Post">
-          <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
-        </IconButton>
-      </Tooltip>
+      <IconButton aria-label="like-post" title="Like Post">
+        <IconifyIcon icon={Icons.LIKE} color={colors.primary.main} />
+        <Typography variant="subtitle1" sx={{...styles.description, marginLeft: 0.5}}>
+          {likes}
+        </Typography>
+      </IconButton>
+
+      <IconButton aria-label="delete-post" title="Delete Post">
+        <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
+      </IconButton>
     </CardActions>
   )
 }
@@ -87,8 +74,6 @@ const PostCard = ({
   createdAt = null,
   likes = 0,
 }) => {
-  // const {googleAuthToken} = useSelector((state) => state.auth)
-
   return (
     <Card sx={{...styles.card}}>
       {selectedFile && (

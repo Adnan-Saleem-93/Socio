@@ -31,6 +31,7 @@ export const Genders = {
 
 export const FormTypes = {
   TEXT: 'text',
+  TEXTAREA: 'textarea',
   EMAIL: 'email',
   PASSWORD: 'password',
   FILE: 'file',
