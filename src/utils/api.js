@@ -25,3 +25,19 @@ export const getAPIs = {
     return response || null
   },
 }
+export const deleteAPIs = {
+  DeletePost: async (id) => {
+    const response = await api.delete(`${endpoints.Posts.DELETE_POST}/${id}`)
+    return response || null
+  },
+}
+export const putAPIs = {
+  LikePost: async (id) => {
+    const response = await api.put(`${endpoints.Posts.LIKE_POST}/${id}`)
+    return response || null
+  },
+  UnlikePost: async (id) => {
+    const response = await api.put(`${endpoints.Posts.UNLIKE_POST}/${id}`)
+    return response || null
+  },
+}

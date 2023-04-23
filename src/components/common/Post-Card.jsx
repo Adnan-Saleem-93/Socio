@@ -4,6 +4,9 @@ import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
 import {Icons} from '../../utils/constants'
 import postStyles from '../../assets/custom-css/post.module.css'
+import {deleteAPIs, putAPIs} from '../../utils/api'
+import {useDispatch} from 'react-redux'
+import {errorMessage} from '../../store/reducers/notify'
 
 const styles = {
   card: {
@@ -50,17 +53,36 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
   )
 }
 
-const Actions = ({likes}) => {
+const Actions = ({likes, id}) => {
+  const dispatchAction = useDispatch()
+  const handleLikeClick = async () => {
+    try {
+      const response = await putAPIs.LikePost(id)
+      if (response) {
+      }
+    } catch (error) {
+      dispatchAction(errorMessage({title: 'Failed to like post', message: error}))
+    }
+  }
+  const handleDeleteClick = async () => {
+    try {
+      const response = await deleteAPIs.DeletePost(id)
+      if (response) {
+      }
+    } catch (error) {
+      dispatchAction(errorMessage({title: 'Failed to delete post', message: error}))
+    }
+  }
   return (
     <CardActions disableSpacing sx={{padding: 0, justifyContent: 'space-between'}}>
-      <IconButton aria-label="like-post" title="Like Post">
+      <IconButton aria-label="like-post" title="Like Post" onClick={handleLikeClick}>
         <IconifyIcon icon={Icons.LIKE} color={colors.primary.main} />
         <Typography variant="subtitle1" sx={{...styles.description, marginLeft: 0.5}}>
           {likes}
         </Typography>
       </IconButton>
 
-      <IconButton aria-label="delete-post" title="Delete Post">
+      <IconButton aria-label="delete-post" title="Delete Post" onClick={handleDeleteClick}>
         <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
       </IconButton>
     </CardActions>
@@ -73,6 +95,7 @@ const PostCard = ({
   author = null,
   createdAt = null,
   likes = 0,
+  _id = null,
 }) => {
   return (
     <Card sx={{...styles.card}}>
@@ -82,8 +105,7 @@ const PostCard = ({
 
       <Box sx={{padding: 1.5}}>
         <Content createdAt={createdAt} author={author} message={message} />
-
-        <Actions likes={likes} />
+        <Actions likes={likes} id={_id} />
       </Box>
     </Card>
   )
