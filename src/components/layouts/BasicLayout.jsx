@@ -40,7 +40,7 @@ export default function BasicLayout() {
       <CssBaseline />
 
       <Sidebar />
-      <Box component="main" sx={{flexGrow: 1, backgroundColor: '#edf2f7', height: '100vh'}}>
+      <Box component="main" sx={{flexGrow: 1, backgroundColor: '#edf2f7', minHeight: '100vh'}}>
         <AppBarComponent />
         {isLoading ? (
           <Loader />
