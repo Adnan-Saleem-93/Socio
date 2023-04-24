@@ -47,7 +47,10 @@ export const centerAlignItem = {
 }
 
 export const URLs = {
-  BASE_URL: 'http://localhost:5000',
+  BASE_URL:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:5000'
+      : 'https://odd-pea-coat-boa.cyclic.app',
 }
 export const endpoints = {
   Posts: {
