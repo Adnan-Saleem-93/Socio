@@ -102,4 +102,5 @@ export const Icons = {
   ADD: 'material-symbols:add',
   ERROR: 'material-symbols:error-circle-rounded',
   DELETE: 'material-symbols:delete-outline',
+  EDIT: 'material-symbols:edit',
 }

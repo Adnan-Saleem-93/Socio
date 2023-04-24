@@ -9,10 +9,11 @@ import IconifyIcon from '../../../components/common/Iconify-Icon'
 import FileInput from '../../../components/common/Form/File-Input'
 import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {onSubmit, preSubmit} from './model'
+import {onSubmit, preSubmit} from '../model'
 import TextArea from '../../../components/common/Form/TextArea'
+import {errorMessage} from '../../../store/reducers/notify'
 
 const styles = {
   form: {
@@ -40,6 +41,8 @@ const styles = {
 }
 
 const CreatePost = () => {
+  const {token} = useSelector((state) => state.auth)
+
   const navigate = useNavigate()
   const buttons = [
     {
@@ -173,21 +176,24 @@ const CreatePost = () => {
       </Box>
     )
   }
+  const submitHandler = async (values) => {
+    try {
+      let result = await preSubmit(selectedFile, dispatchAction)
+      let updatedValues = {...values}
+      if (selectedFile && result) {
+        updatedValues = {...updatedValues, selectedFile: result}
+      } else {
+        updatedValues = {...values, selectedFile: null}
+      }
+      onSubmit(updatedValues, dispatchAction, navigate, token)
+    } catch (err) {
+      dispatchAction(errorMessage({title: 'Failed to create post', message: err}))
+    }
+  }
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(async (values) => {
-          let result = await preSubmit(selectedFile, dispatchAction)
-          if (selectedFile && result) {
-            let updatedValues = {...values, selectedFile: result}
-            onSubmit(updatedValues, dispatchAction, navigate)
-          } else {
-            let updatedValues = {...values, selectedFile: null}
-            onSubmit(updatedValues, dispatchAction, navigate)
-          }
-        })}
-      >
+      <form onSubmit={handleSubmit((values) => submitHandler(values))}>
         <Box
           sx={{
             display: 'flex',

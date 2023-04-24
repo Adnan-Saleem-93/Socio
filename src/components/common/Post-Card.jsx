@@ -4,11 +4,10 @@ import IconifyIcon from './Iconify-Icon'
 import moment from 'moment'
 import {Icons} from '../../utils/constants'
 import postStyles from '../../assets/custom-css/post.module.css'
-import {deleteAPIs, putAPIs} from '../../utils/api'
-import {useDispatch} from 'react-redux'
-import {errorMessage} from '../../store/reducers/notify'
-import {setPosts} from '../../store/reducers/posts'
-import {startLoading, stopLoading} from '../../store/reducers/loader'
+import {useDispatch, useSelector} from 'react-redux'
+import {parseJWT} from '../../utils/general-methods'
+import {useMemo} from 'react'
+import {handleDeleteClick, handleLikeClick} from '../../views/Posts/model'
 
 const styles = {
   card: {
@@ -40,11 +39,12 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
     }
     return message
   }
+
   return (
     <CardContent sx={{padding: 0}}>
       <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <Typography variant="h6" fontWeight={800} className={postStyles.header}>
-          {author}
+        <Typography variant="h6" fontWeight={800} fontSize="1rem" className={postStyles.author}>
+          {author || 'Anonymous'}
         </Typography>
         <TimeStamp createdAt={createdAt} />
       </Box>
@@ -55,42 +55,41 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
   )
 }
 
-const Actions = ({likes, id}) => {
+const Actions = ({likes, id, author = ''}) => {
+  const {token} = useSelector((state) => state.auth)
+  const decodedToken = useMemo(() => parseJWT(token), [token])
+
   const dispatchAction = useDispatch()
-  const handleLikeClick = async () => {
-    try {
-      const response = await putAPIs.LikePost(id)
-      if (response) {
-      }
-    } catch (error) {
-      dispatchAction(errorMessage({title: 'Failed to like post', message: error}))
-    }
-  }
-  const handleDeleteClick = async () => {
-    try {
-      dispatchAction(startLoading())
-      const response = await deleteAPIs.DeletePost(id)
-      if (response) {
-        dispatchAction(setPosts(response))
-      }
-    } catch (error) {
-      dispatchAction(errorMessage({title: 'Failed to delete post', message: error}))
-    } finally {
-      dispatchAction(stopLoading())
-    }
-  }
+
   return (
     <CardActions disableSpacing sx={{padding: 0, justifyContent: 'space-between'}}>
-      <IconButton aria-label="like-post" title="Like Post" onClick={handleLikeClick}>
+      <IconButton
+        aria-label="like-post"
+        title="Like Post"
+        onClick={() => {
+          handleLikeClick({id, likedBy: decodedToken?.id, dispatchAction})
+        }}
+      >
         <IconifyIcon icon={Icons.LIKE} color={colors.primary.main} />
         <Typography variant="subtitle1" sx={{...styles.description, marginLeft: 0.5}}>
           {likes}
         </Typography>
       </IconButton>
 
-      <IconButton aria-label="delete-post" title="Delete Post" onClick={handleDeleteClick}>
-        <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
-      </IconButton>
+      {decodedToken?.name === author && (
+        <Box>
+          <IconButton aria-label="edit-post" title="Edit Post" onClick={handleDeleteClick}>
+            <IconifyIcon icon={Icons.EDIT} color={colors.primary.hover} />
+          </IconButton>
+          <IconButton
+            aria-label="delete-post"
+            title="Delete Post"
+            onClick={() => handleDeleteClick(id, dispatchAction)}
+          >
+            <IconifyIcon icon={Icons.DELETE} color={colors.error.main} />
+          </IconButton>
+        </Box>
+      )}
     </CardActions>
   )
 }
@@ -111,7 +110,7 @@ const PostCard = ({
 
       <Box sx={{padding: 1.5}}>
         <Content createdAt={createdAt} author={author} message={message} />
-        <Actions likes={likes} id={_id} />
+        <Actions likes={likes} id={_id} author={author} />
       </Box>
     </Card>
   )

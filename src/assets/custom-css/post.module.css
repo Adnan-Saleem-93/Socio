@@ -1,4 +1,6 @@
-
+.author {
+    color:darkslategrey !important
+}
 
 .image {
     object-fit: cover;
@@ -12,17 +14,6 @@
     filter: brightness(85%);
 }
 
-.header {
-    font-size: 1rem !important;
-    color: white;
-    position: absolute;
-    top: 0.5rem;
-    bottom: 0;
-    left: 0.5rem;
-    right: 0;
-    height: fit-content;
-    font-weight: 900;
-}
 .date {
     font-size: 0.75rem !important;
     height: fit-content;
