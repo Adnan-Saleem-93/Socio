@@ -43,13 +43,16 @@ export const uploadFileToFirebase = async (selectedFile, dispatchAction) => {
 
 export const handleLikeClick = async ({id, likedBy, dispatchAction}) => {
   try {
-    const response = await putAPIs.LikePost(id)
+    let body = {likedBy}
+    const response = await putAPIs.LikePost(id, body)
     if (response) {
+      dispatchAction(setPosts(response))
     }
   } catch (error) {
     dispatchAction(errorMessage({title: 'Failed to like post', message: error}))
   }
 }
+
 export const handleDeleteClick = async (id, dispatchAction) => {
   try {
     dispatchAction(startLoading())

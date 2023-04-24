@@ -32,12 +32,8 @@ export const deleteAPIs = {
   },
 }
 export const putAPIs = {
-  LikePost: async (id) => {
-    const response = await api.put(`${endpoints.Posts.LIKE_POST}/${id}`)
-    return response?.data || null
-  },
-  UnlikePost: async (id) => {
-    const response = await api.put(`${endpoints.Posts.UNLIKE_POST}/${id}`)
+  LikePost: async (id, body) => {
+    const response = await api.put(`${endpoints.Posts.LIKE_POST}/${id}`, body)
     return response?.data || null
   },
 }

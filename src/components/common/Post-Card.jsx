@@ -99,7 +99,7 @@ const PostCard = ({
   selectedFile = null,
   author = null,
   createdAt = null,
-  likes = 0,
+  likedBy = [],
   _id = null,
 }) => {
   return (
@@ -110,7 +110,7 @@ const PostCard = ({
 
       <Box sx={{padding: 1.5}}>
         <Content createdAt={createdAt} author={author} message={message} />
-        <Actions likes={likes} id={_id} author={author} />
+        <Actions likes={likedBy.length} id={_id} author={author} />
       </Box>
     </Card>
   )
