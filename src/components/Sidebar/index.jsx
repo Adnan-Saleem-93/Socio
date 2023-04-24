@@ -21,6 +21,8 @@ import {colors} from '../../assets/colors'
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {logOut} from '../../store/reducers/auth'
+import IconifyIcon from '../common/Iconify-Icon'
+import {Icons} from '../../utils/constants'
 
 const drawerWidth = 240
 
@@ -87,14 +89,20 @@ const PostListItemsSection = () => {
     {
       key: 1,
       text: 'Create New Post',
-      icon: <AddIcon />,
+      icon: <IconifyIcon icon={Icons.ADD} />,
       clickEvent: () => navigate('/create-post'),
     },
     {
       key: 2,
       text: 'Posts',
-      icon: <RecentActorsIcon />,
+      icon: <IconifyIcon icon={Icons.CAROUSEL} />,
       clickEvent: () => navigate('/posts'),
+    },
+    {
+      key: 2,
+      text: 'Saved',
+      icon: <IconifyIcon icon={Icons.BOOKMARK} />,
+      // clickEvent: () => navigate('/posts'),
     },
   ]
 

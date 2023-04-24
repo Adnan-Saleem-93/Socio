@@ -103,4 +103,7 @@ export const Icons = {
   ERROR: 'material-symbols:error-circle-rounded',
   DELETE: 'material-symbols:delete-outline',
   EDIT: 'material-symbols:edit',
+  CHAT: 'ant-design:message-outlined',
+  BOOKMARK: 'material-symbols:bookmark-outline-sharp',
+  CAROUSEL: 'material-symbols:view-carousel-outline',
 }

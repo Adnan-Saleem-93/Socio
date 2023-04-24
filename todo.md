@@ -4,8 +4,8 @@
 4. **Dark theme**
 5. **Save Post**
 6. **Edit Post**
-7. **Like/Unlike Post**
-8. **Google Auth**
+7. ~~Like/Unlike Post~~
+8. ~~Google Auth~~
 9. Multiple file uploading
 10. **Chat Feature**
 11. **Profile Update**
