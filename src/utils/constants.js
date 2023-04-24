@@ -53,10 +53,10 @@ export const endpoints = {
   Posts: {
     CREATE_POST: '/posts',
     GET_POSTS: '/posts',
-    GET_POST_BY_ID: '/posts/:id',
-    DELETE_POST: '/posts/delete/:id',
-    LIKE_POST: '/posts/like/:id',
-    UNLIKE_POST: '/posts/unlike/:id',
+    GET_POST_BY_ID: '/posts',
+    DELETE_POST: '/posts/delete',
+    LIKE_POST: '/posts/like',
+    UNLIKE_POST: '/posts/unlike',
   },
   Auth: {LOG_IN: '/auth/login', SIGN_UP: '/auth/sign-up'},
 }

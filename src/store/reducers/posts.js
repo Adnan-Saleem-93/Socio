@@ -8,7 +8,11 @@ const postReducer = createSlice({
     isLoading: false,
     error: '',
   },
-  reducers: {},
+  reducers: {
+    setPosts: (state, {payload}) => {
+      state.posts = payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPosts.pending, (state) => {
@@ -25,6 +29,8 @@ const postReducer = createSlice({
       })
   },
 })
+
+export const {setPosts} = postReducer.actions
 
 export default postReducer.reducer
 

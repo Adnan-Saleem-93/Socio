@@ -7,6 +7,8 @@ import postStyles from '../../assets/custom-css/post.module.css'
 import {deleteAPIs, putAPIs} from '../../utils/api'
 import {useDispatch} from 'react-redux'
 import {errorMessage} from '../../store/reducers/notify'
+import {setPosts} from '../../store/reducers/posts'
+import {startLoading, stopLoading} from '../../store/reducers/loader'
 
 const styles = {
   card: {
@@ -66,11 +68,15 @@ const Actions = ({likes, id}) => {
   }
   const handleDeleteClick = async () => {
     try {
+      dispatchAction(startLoading())
       const response = await deleteAPIs.DeletePost(id)
       if (response) {
+        dispatchAction(setPosts(response))
       }
     } catch (error) {
       dispatchAction(errorMessage({title: 'Failed to delete post', message: error}))
+    } finally {
+      dispatchAction(stopLoading())
     }
   }
   return (

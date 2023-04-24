@@ -3,8 +3,10 @@ import CssBaseline from '@mui/material/CssBaseline'
 import useAuth from '../custom-hooks/useAuth'
 import {Navigate, Outlet} from 'react-router-dom'
 import Sidebar from '../Sidebar'
-import {AppBar, Toolbar, Typography} from '@mui/material'
+import {Toolbar, Typography} from '@mui/material'
 import {colors} from '../../assets/colors'
+import {useSelector} from 'react-redux'
+import Loader from '../common/Loader'
 
 const AppBarComponent = () => {
   return (
@@ -31,6 +33,7 @@ const AppBarComponent = () => {
 
 export default function BasicLayout() {
   const isAuthenticated = useAuth()
+  const {show: isLoading} = useSelector((state) => state.loader)
 
   return (
     <Box sx={{display: 'flex'}}>
@@ -39,7 +42,11 @@ export default function BasicLayout() {
       <Sidebar />
       <Box component="main" sx={{flexGrow: 1, backgroundColor: '#edf2f7', height: '100vh'}}>
         <AppBarComponent />
-        <Box sx={{p: 2}}>{!isAuthenticated ? <Navigate to="/login" /> : <Outlet />}</Box>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Box sx={{p: 2}}>{!isAuthenticated ? <Navigate to="/login" /> : <Outlet />}</Box>
+        )}
       </Box>
     </Box>
   )
