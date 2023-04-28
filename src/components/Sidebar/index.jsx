@@ -1,10 +1,6 @@
 import {useState} from 'react'
 
 // material icons
-import AddIcon from '@mui/icons-material/Add'
-import RecentActorsIcon from '@mui/icons-material/RecentActors'
-import SettingsIcon from '@mui/icons-material/Settings'
-import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 import MuiDrawer from '@mui/material/Drawer'
 
 import {
@@ -99,10 +95,10 @@ const PostListItemsSection = () => {
       clickEvent: () => navigate('/posts'),
     },
     {
-      key: 2,
+      key: 3,
       text: 'Saved',
       icon: <IconifyIcon icon={Icons.BOOKMARK} />,
-      // clickEvent: () => navigate('/posts'),
+      clickEvent: () => navigate('/saved-posts'),
     },
   ]
 
@@ -170,13 +166,13 @@ const AccountListItemsSection = () => {
     {
       key: 1,
       text: 'Profile Settings',
-      icon: <SettingsIcon />,
+      icon: <IconifyIcon icon={Icons.SETTINGS} />,
       clickEvent: () => navigate('/profile-settings'),
     },
     {
       key: 2,
       text: 'Log Out',
-      icon: <PowerSettingsNewIcon />,
+      icon: <IconifyIcon icon={Icons.LOG_OUT} />,
       clickEvent: () => dispatchAction(logOut()),
     },
   ]

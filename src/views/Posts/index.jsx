@@ -15,7 +15,7 @@ const Posts = () => {
     dispatchAction(getPosts())
 
     return () => {}
-  }, [])
+  }, [dispatchAction])
 
   const renderPostCards = () => {
     if (!posts?.length) {

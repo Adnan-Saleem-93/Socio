@@ -7,6 +7,7 @@ import ErrorPage from '../views/ErrorPage'
 import Posts from '../views/Posts'
 import CreatePost from '../views/Posts/create-post'
 import ProfileSettings from '../views/Profile'
+import SavedPosts from '../views/Posts/saved-posts'
 
 const router = createBrowserRouter([
   {
@@ -38,12 +39,20 @@ const router = createBrowserRouter([
         element: <Posts />,
       },
       {
+        path: '/create-post',
+        element: <CreatePost />,
+      },
+      {
+        path: '/edit-post',
+        element: <CreatePost />,
+      },
+      {
         path: '/posts',
         element: <Posts />,
       },
       {
-        path: '/create-post',
-        element: <CreatePost />,
+        path: '/saved-posts',
+        element: <SavedPosts />,
       },
       {
         path: '/profile-settings',

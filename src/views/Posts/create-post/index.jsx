@@ -1,7 +1,7 @@
 import {useForm, Controller, useWatch} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {TextField, Paper, Typography, Box, Button, CircularProgress} from '@mui/material'
-import {form, initialValues, validations} from './schema'
+import {useSchema} from './useSchema'
 import {FormTypes, Icons} from '../../../utils/constants'
 import {colors} from '../../../assets/colors'
 import '../../../assets/custom-css/form.css'
@@ -10,7 +10,7 @@ import FileInput from '../../../components/common/Form/File-Input'
 import {centerAlignItem} from '../../../utils/constants'
 import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {onSubmit, preSubmit} from '../model'
 import TextArea from '../../../components/common/Form/TextArea'
 import {errorMessage} from '../../../store/reducers/notify'
@@ -42,6 +42,9 @@ const styles = {
 
 const CreatePost = () => {
   const {token} = useSelector((state) => state.auth)
+  const {pathname} = useLocation()
+  const isEdit = pathname.includes('/edit-post')
+  const {form, initialValues, validations} = useSchema({isEdit})
 
   const navigate = useNavigate()
   const buttons = [

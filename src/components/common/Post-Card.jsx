@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {parseJWT} from '../../utils/general-methods'
 import {useMemo} from 'react'
 import {handleDeleteClick, handleLikeClick} from '../../views/Posts/model'
+import {useNavigate} from 'react-router-dom'
 
 const styles = {
   card: {
@@ -55,11 +56,12 @@ const Content = ({createdAt = null, author = '', message = ''}) => {
   )
 }
 
-const Actions = ({likes, id, author = ''}) => {
+const Actions = ({likes, id, author = '', message = '', tags = [], selectedFile = null}) => {
   const {token} = useSelector((state) => state.auth)
   const decodedToken = useMemo(() => parseJWT(token), [token])
 
   const dispatchAction = useDispatch()
+  const navigate = useNavigate()
 
   return (
     <CardActions disableSpacing sx={{padding: 0, justifyContent: 'space-between'}}>
@@ -78,7 +80,11 @@ const Actions = ({likes, id, author = ''}) => {
 
       {decodedToken?.name === author && (
         <Box>
-          <IconButton aria-label="edit-post" title="Edit Post" onClick={handleDeleteClick}>
+          <IconButton
+            aria-label="edit-post"
+            title="Edit Post"
+            onClick={() => navigate('/edit-post')}
+          >
             <IconifyIcon icon={Icons.EDIT} color={colors.primary.hover} />
           </IconButton>
           <IconButton
@@ -100,6 +106,7 @@ const PostCard = ({
   author = null,
   createdAt = null,
   likedBy = [],
+  tags = [],
   _id = null,
 }) => {
   return (
@@ -110,7 +117,14 @@ const PostCard = ({
 
       <Box sx={{padding: 1.5}}>
         <Content createdAt={createdAt} author={author} message={message} />
-        <Actions likes={likedBy.length} id={_id} author={author} />
+        <Actions
+          likes={likedBy.length}
+          id={_id}
+          author={author}
+          message={message}
+          tags={tags}
+          selectedFile={selectedFile}
+        />
       </Box>
     </Card>
   )

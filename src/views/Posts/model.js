@@ -66,3 +66,5 @@ export const handleDeleteClick = async (id, dispatchAction) => {
     dispatchAction(stopLoading())
   }
 }
+
+export const getPostByID = (id) => {}
