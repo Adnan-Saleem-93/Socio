@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import moment from 'moment'
+import {parseJWT} from '../../utils/general-methods'
 
 export const authReducer = createSlice({
   name: 'auth',
@@ -7,6 +8,7 @@ export const authReducer = createSlice({
     token: null,
     googleAuthToken: null,
     rememberMeDetails: null,
+    expiry: null,
   },
   reducers: {
     authenticateUserWithGoogleLogin: (state, {payload: tokenResponse}) => {
@@ -19,6 +21,9 @@ export const authReducer = createSlice({
     },
     authenticateUserWithEmail: (state, {payload: token}) => {
       state.token = token
+      let decodedToken = parseJWT(token)
+      let expiry = moment(decodedToken.exp * 1000).format()
+      state.expiry = expiry
     },
     logOut: (state) => {
       state.token = null

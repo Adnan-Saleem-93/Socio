@@ -18,7 +18,7 @@ const AuthLayout = () => {
         }}
       >
         <Box sx={{...centerAlignItem, justifyContent: 'space-evenly'}}>
-          <img src={bgImage} alt="login" height="50%" width="30%" />
+          <img src={bgImage} alt="login" height="50%" width="45%" />
           <Box
             sx={{
               ...centerAlignItem,
@@ -27,7 +27,7 @@ const AuthLayout = () => {
               border: `2px solid ${colors.border.main}`,
               height: 'auto',
               maxHeight: '100%',
-              width: {xs: '80%', sm: '60%', md: '30%'},
+              width: {xs: '90%', sm: '45%'},
               padding: '1rem',
             }}
           >

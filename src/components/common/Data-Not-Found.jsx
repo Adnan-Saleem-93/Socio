@@ -5,23 +5,24 @@ import {columnStartAlignedFlexbox, justifyCenterFlexboxRow} from '../../utils/co
 
 const styles = {
   firstBox: {
-    ...justifyCenterFlexboxRow
+    ...justifyCenterFlexboxRow,
+    flexDirection: 'column',
   },
   image: {
     width: '25rem',
-    height: '20rem'
+    height: '20rem',
   },
   secondBox: {
-    ...columnStartAlignedFlexbox
+    ...columnStartAlignedFlexbox,
   },
   header: {
     color: colors.error.main,
-    fontWeight: 600
+    fontWeight: 600,
   },
   description: {
     fontWeight: 500,
-    color: colors.dark.main
-  }
+    color: colors.dark.main,
+  },
 }
 
 const DataNotFound = () => {

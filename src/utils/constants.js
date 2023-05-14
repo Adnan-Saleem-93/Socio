@@ -39,12 +39,18 @@ export const centerAlignItem = {
   width: '100%',
 }
 
+export const environments = {
+  DEVELOPMENT: 'development',
+  PRODUCTION: 'production',
+}
+
 export const URLs = {
   BASE_URL:
-    process.env.NODE_ENV === 'development'
+    process.env.NODE_ENV === environments.DEVELOPMENT
       ? 'http://localhost:5000'
       : 'https://odd-pea-coat-boa.cyclic.app',
 }
+
 export const endpoints = {
   Posts: {
     CREATE_POST: '/posts',
